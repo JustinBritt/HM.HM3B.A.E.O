@@ -1,0 +1,86 @@
+﻿namespace HM.HM3B.A.E.O.Interfaces.Calculations.SurgeonDayScenarioCumulativeNumberPatients
+{
+    using HM.HM3B.A.E.O.Interfaces.CrossJoins;
+    using HM.HM3B.A.E.O.Interfaces.Indices;
+    using HM.HM3B.A.E.O.Interfaces.Parameters.MaximumNumberRecoveryWardBeds;
+    using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonDayScenarioLengthOfStayProbabilities;
+    using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonLengthOfStayMaximums;
+    using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonScenarioMaximumNumberPatients;
+    using HM.HM3B.A.E.O.Interfaces.Results.ScenarioRecoveryWardServiceLevels;
+    using HM.HM3B.A.E.O.Interfaces.Results.ScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.Interfaces.Results.SurgeonDayAssignments;
+    using HM.HM3B.A.E.O.Interfaces.Results.SurgeonDayScenarioCumulativeNumberPatients;
+    using HM.HM3B.A.E.O.InterfacesFactories.Calculations.DayScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.Calculations.ScenarioRecoveryWardServiceLevels;
+    using HM.HM3B.A.E.O.InterfacesFactories.Calculations.ScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.Calculations.ScenarioRequiredNumberBeds;
+    using HM.HM3B.A.E.O.InterfacesFactories.Calculations.SurgeonDayScenarioCumulativeNumberPatients;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.MathNet.Numerics.Distributions;
+    using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.DayScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.ScenarioRecoveryWardServiceLevels;
+    using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.ScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.SurgeonDayScenarioCumulativeNumberPatients;
+    using HM.HM3B.A.E.O.InterfacesFactories.Results.DayScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.Results.ScenarioRecoveryWardServiceLevels;
+    using HM.HM3B.A.E.O.InterfacesFactories.Results.ScenarioRecoveryWardUtilizations;
+    using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonDayScenarioCumulativeNumberPatients;
+
+    public interface IΦHatCalculation
+    {
+        IΦHat Calculate(
+            IExpectedValueIResultElementCalculationFactory expectedValueIResultElementCalculationFactory,
+            IExpectedValueΦResultElementCalculationFactory expectedValueΦResultElementCalculationFactory,
+            IVarianceIResultElementCalculationFactory varianceIResultElementCalculationFactory,
+            IVarianceΦResultElementCalculationFactory varianceΦResultElementCalculationFactory,
+            IVHatResultElementCalculationFactory VHatResultElementCalculationFactory,
+            Iυ2ResultElementCalculationFactory υ2ResultElementCalculationFactory,
+            IΦHatResultElementCalculationFactory ΦHatResultElementCalculationFactory,
+            IExpectedValueICalculationFactory expectedValueICalculationFactory,
+            IExpectedValueΦCalculationFactory expectedValueΦCalculationFactory,
+            IMRNBCalculationFactory MRNBCalculationFactory,
+            IRNBCalculationFactory RNBCalculationFactory,
+            ItStarCalculationFactory tStarCalculationFactory,
+            IVarianceICalculationFactory varianceICalculationFactory,
+            IVarianceΦCalculationFactory varianceΦCalculationFactory,
+            IVHatCalculationFactory VHatCalculationFactory,
+            Iυ2CalculationFactory υ2CalculationFactory,
+            INormalFactory normalFactory,
+            IExpectedValueIResultElementFactory expectedValueIResultElementFactory,
+            IExpectedValueΦResultElementFactory expectedValueΦResultElementFactory,
+            IVarianceIResultElementFactory varianceIResultElementFactory,
+            IVarianceΦResultElementFactory varianceΦResultElementFactory,
+            IVHatResultElementFactory VHatResultElementFactory,
+            Iυ2ResultElementFactory υ2ResultElementFactory,
+            IΦHatResultElementFactory ΦHatResultElementFactory,
+            IExpectedValueIFactory expectedValueIFactory,
+            IExpectedValueΦFactory expectedValueΦFactory,
+            IVarianceIFactory varianceIFactory,
+            IVarianceΦFactory varianceΦFactory,
+            IVHatFactory VHatFactory,
+            Iυ2Factory υ2Factory,
+            IΦHatFactory ΦHatFactory,
+            Il l,
+            It t,
+            IΛ Λ,
+            IslΛ slΛ,
+            Ist st,
+            ItΛ tΛ,
+            IL L,
+            Ip p,
+            Iμ μ,
+            Iσ σ,
+            IΩ Ω,
+            Iz z);
+
+        IΦHat Calculate(
+            INormalFactory normalFactory,
+            IΦHatResultElementFactory ΦHatResultElementFactory,
+            IΦHatFactory ΦHatFactory,
+            IΦHatResultElementCalculation ΦHatResultElementCalculation,
+            IslΛ slΛ,
+            IExpectedValueΦ expectedValueΦ,
+            IVarianceΦ varianceΦ,
+            IVHat VHat,
+            Iυ2 υ2);
+    }
+}
