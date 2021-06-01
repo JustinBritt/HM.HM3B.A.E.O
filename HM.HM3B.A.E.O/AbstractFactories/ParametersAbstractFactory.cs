@@ -52,7 +52,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -68,7 +70,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -84,7 +88,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -100,7 +106,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -116,7 +124,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -132,7 +142,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -148,7 +160,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -164,7 +178,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -180,7 +196,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -196,7 +214,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -212,7 +232,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -228,7 +250,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -244,7 +268,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -260,7 +286,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -276,7 +304,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -292,7 +322,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -308,7 +340,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
@@ -324,7 +358,9 @@
             }
             catch (Exception exception)
             {
-                this.Log.Error("Exception message: " + exception.Message + " and stacktrace " + exception.StackTrace);
+                this.Log.Error(
+                    exception.Message,
+                    exception);
             }
 
             return factory;
