@@ -13,7 +13,7 @@
 
         public AbstractFactory()
         {
-            using (FileStream fileStream = File.OpenRead("HM.HM3A.A.E.O.config"))
+            using (FileStream fileStream = File.OpenRead("HM.HM3B.A.E.O.config"))
             {
                 log4net.Config.XmlConfigurator.Configure(
                     LogManager.GetRepository(System.Reflection.Assembly.GetExecutingAssembly()),
