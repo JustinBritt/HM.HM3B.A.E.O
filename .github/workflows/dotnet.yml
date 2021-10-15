@@ -26,4 +26,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish package
-      run: dotnet nuget push /home/runner/work/HM.HM3B.A.E.O/HM.HM3B.A.E.O/HM.HM3B.A.E.O/bin/Release/*.nupkg
+      run: dotnet nuget push ${{ github.workspace }}/${{ github.event.repository.name }}/bin/Release/*.nupkg
