@@ -1,9 +1,8 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Parameters.DayAvailabilities
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.DayAvailabilities;
@@ -14,20 +13,17 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ψ(
-            ImmutableList<IψParameterElement> value)
+            RedBlackTree<ItIndexElement, IψParameterElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IψParameterElement> Value { get; }
+        public RedBlackTree<ItIndexElement, IψParameterElement> Value { get; }
 
         public int GetElementAtAsint(
             ItIndexElement tIndexElement)
         {
-            return this.Value
-                .Where(x => x.tIndexElement == tIndexElement)
-                .Select(x => x.Value.Value.Value ? 1 : 0)
-                .SingleOrDefault();
+            return this.Value[tIndexElement].Value.Value.Value ? 1 : 0;
         }
     }
 }

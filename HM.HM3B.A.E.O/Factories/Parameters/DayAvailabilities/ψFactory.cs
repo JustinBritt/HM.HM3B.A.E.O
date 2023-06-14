@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.DayAvailabilities
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.DayAvailabilities;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.DayAvailabilities;
     using HM.HM3B.A.E.O.Interfaces.Parameters.DayAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.DayAvailabilities;
@@ -19,7 +21,7 @@
         }
 
         public Iψ Create(
-            ImmutableList<IψParameterElement> value)
+            RedBlackTree<ItIndexElement, IψParameterElement> value)
         {
             Iψ parameter = null;
 
