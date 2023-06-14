@@ -46,7 +46,7 @@
             ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientMeans,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<decimal>>> scenarioProbabilities,
             ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviations,
-            ImmutableList<KeyValuePair<FhirDateTime, INullableValue<bool>>> dayAvailabilities,
+            RedBlackTree<FhirDateTime, INullableValue<bool>> dayAvailabilities,
             INullableValue<int> maximumNumberRecoveryWardBeds)
         {
             IHM3BInputContext context = null;

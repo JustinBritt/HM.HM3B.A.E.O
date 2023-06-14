@@ -40,7 +40,7 @@
             ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientMeans,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<decimal>>> scenarioProbabilities,
             ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviations,
-            ImmutableList<KeyValuePair<FhirDateTime, INullableValue<bool>>> dayAvailabilities,
+            RedBlackTree<FhirDateTime, INullableValue<bool>> dayAvailabilities,
             INullableValue<int> maximumNumberRecoveryWardBeds)
         {
             this.Weekdays = weekdays;
@@ -161,7 +161,7 @@
 
         public ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> SurgeonScenarioMaximumNumberPatientStandardDeviations { get; }
 
-        public ImmutableList<KeyValuePair<FhirDateTime, INullableValue<bool>>> DayAvailabilities { get; }
+        public RedBlackTree<FhirDateTime, INullableValue<bool>> DayAvailabilities { get; }
 
         public INullableValue<int> MaximumNumberRecoveryWardBeds { get; }
     }

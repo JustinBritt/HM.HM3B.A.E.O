@@ -56,7 +56,7 @@
 
         ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> SurgeonScenarioMaximumNumberPatientStandardDeviations { get; }
 
-        ImmutableList<KeyValuePair<FhirDateTime, INullableValue<bool>>> DayAvailabilities { get; }
+        RedBlackTree<FhirDateTime, INullableValue<bool>> DayAvailabilities { get; }
 
         INullableValue<int> MaximumNumberRecoveryWardBeds { get; }
     }
