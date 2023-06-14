@@ -61,6 +61,7 @@
 
             // j
             this.j = indicesAbstractFactory.CreatejFactory().Create(
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.Context.SurgicalSpecialties
                 .Select(x => x.Item1)
                 .Select(x => indexElementsAbstractFactory.CreatejIndexElementFactory().Create(x))
@@ -167,7 +168,7 @@
             this.srj = crossJoinsAbstractFactory.CreatesrjFactory().Create(
                 this.s.Value
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
-                .SelectMany(b => this.j.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrjCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
+                .SelectMany(b => this.j.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesrjCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
             // srt

@@ -1,11 +1,10 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Indices
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
@@ -15,19 +14,17 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public j(
-            ImmutableList<IjIndexElement> value)
+            RedBlackTree<Organization, IjIndexElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IjIndexElement> Value { get; }
+        public RedBlackTree<Organization, IjIndexElement> Value { get; }
 
         public IjIndexElement GetElementAt(
             Organization value)
         {
-            return this.Value
-                .Where(x => x.Value == value)
-                .SingleOrDefault();
+            return this.Value[value];
         }
     }
 }
