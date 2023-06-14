@@ -14,7 +14,7 @@
         public σParameterElement(
             IsIndexElement sIndexElement,
             IΛIndexElement ΛIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             this.sIndexElement = sIndexElement;
 
@@ -27,6 +27,6 @@
 
         public IΛIndexElement ΛIndexElement { get; }
 
-        public FhirDecimal Value { get; }
+        public INullableValue<decimal> Value { get; }
     }
 }

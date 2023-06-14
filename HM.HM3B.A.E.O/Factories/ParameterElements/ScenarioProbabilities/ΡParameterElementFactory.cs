@@ -21,7 +21,7 @@
 
         public IΡParameterElement Create(
             IΛIndexElement ΛIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             IΡParameterElement parameterElement = null;
 

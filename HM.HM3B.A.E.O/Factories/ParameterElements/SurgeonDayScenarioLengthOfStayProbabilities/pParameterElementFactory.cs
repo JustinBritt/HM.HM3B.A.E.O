@@ -23,7 +23,7 @@
             IsIndexElement sIndexElement,
             IlIndexElement lIndexElement,
             IΛIndexElement ΛIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             IpParameterElement parameterElement = null;
 

@@ -22,7 +22,7 @@
         public IμParameterElement Create(
             IsIndexElement sIndexElement,
             IΛIndexElement ΛIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             IμParameterElement parameterElement = null;
 
