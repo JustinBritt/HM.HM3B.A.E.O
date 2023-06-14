@@ -6,6 +6,8 @@
     {
         IDeviceComparerFactory CreateDeviceComparerFactory();
 
+        ILocationComparerFactory CreateLocationComparerFactory();
+
         IOrganizationComparerFactory CreateOrganizationComparerFactory();
     }
 }
