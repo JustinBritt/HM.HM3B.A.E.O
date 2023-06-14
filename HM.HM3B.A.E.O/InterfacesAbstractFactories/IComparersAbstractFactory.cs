@@ -8,6 +8,8 @@
 
         ILocationComparerFactory CreateLocationComparerFactory();
 
+        INullableValueintComparerFactory CreateNullableValueintComparerFactory();
+
         IOrganizationComparerFactory CreateOrganizationComparerFactory();
     }
 }
