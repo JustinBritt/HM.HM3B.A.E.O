@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Interfaces.Contexts;
 
     public sealed class HM3BInputContext : IHM3BInputContext
