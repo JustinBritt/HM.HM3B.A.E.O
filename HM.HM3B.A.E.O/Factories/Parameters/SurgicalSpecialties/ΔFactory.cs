@@ -5,7 +5,10 @@
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgicalSpecialties;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgicalSpecialties;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgicalSpecialties;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgicalSpecialties;
@@ -19,6 +22,7 @@
         }
 
         public IΔ Create(
+            RedBlackTree<IjIndexElement, ImmutableList<IsIndexElement>> redBlackTree,
             ImmutableList<IΔParameterElement> value)
         {
             IΔ parameter = null;
@@ -26,6 +30,7 @@
             try
             {
                 parameter = new Δ(
+                    redBlackTree,
                     value);
             }
             catch (Exception exception)

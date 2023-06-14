@@ -27,6 +27,8 @@
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgicalSpecialties;
     using HM.HM3B.A.E.O.Interfaces.Parameters.TimeBlockLength;
     using HM.HM3B.A.E.O.Interfaces.Variables;
+    using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
+    using NGenerics.Patterns.Visitor;
 
     internal abstract class HM3BModel
     {
@@ -63,7 +65,7 @@
             this.j = indicesAbstractFactory.CreatejFactory().Create(
                 comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.Context.SurgicalSpecialties
-                .Select(x => x.Item1)
+                .Select(x => x.Key)
                 .Select(x => indexElementsAbstractFactory.CreatejIndexElementFactory().Create(x))
                 .ToImmutableList());
 
@@ -263,12 +265,17 @@
                 this.Context.NumberDaysPerWeek);
 
             // Δ(j)
+            ISurgicalSpecialtiesVisitor<Organization, ImmutableSortedSet<Organization>> surgicalSpecialtiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgicalSpecialtiesVisitor<Organization, ImmutableSortedSet<Organization>>(
+                parameterElementsAbstractFactory.CreateΔParameterElementFactory(),
+                this.j,
+                this.s);
+
+            this.Context.SurgicalSpecialties.AcceptVisitor(
+                surgicalSpecialtiesVisitor);
+
             this.Δ = parametersAbstractFactory.CreateΔFactory().Create(
-                this.Context.SurgicalSpecialties
-                .Select(x => parameterElementsAbstractFactory.CreateΔParameterElementFactory().Create(
-                    this.j.GetElementAt(x.Item1),
-                    x.Item2.Select(i => this.s.GetElementAt(i)).ToImmutableList()))
-                .ToImmutableList());
+                surgicalSpecialtiesVisitor.RedBlackTree,
+                surgicalSpecialtiesVisitor.Value.ToImmutableList());
 
             // ζ(s, m)
             this.ζ = parametersAbstractFactory.CreateζFactory().Create(

@@ -18,7 +18,7 @@
 
         public HM3BInputContext(
             ImmutableSortedSet<INullableValue<int>> weekdays,
-            ImmutableList<Tuple<Organization, ImmutableList<Organization>>> surgicalSpecialties,
+            RedBlackTree<Organization, ImmutableSortedSet<Organization>> surgicalSpecialties,
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             Bundle machines,
             Bundle operatingRooms,
@@ -117,7 +117,7 @@
 
         public ImmutableSortedSet<INullableValue<int>> Weekdays { get; }
 
-        public ImmutableList<Tuple<Organization, ImmutableList<Organization>>> SurgicalSpecialties { get; }
+        public RedBlackTree<Organization, ImmutableSortedSet<Organization>> SurgicalSpecialties { get; }
 
         public ImmutableSortedSet<INullableValue<int>> LengthOfStayDays { get; }
 
