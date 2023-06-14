@@ -7,6 +7,6 @@
     public interface IΩFactory
     {
         IΩ Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

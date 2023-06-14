@@ -7,6 +7,6 @@
     public interface IWFactory
     {
         IW Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

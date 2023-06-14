@@ -19,7 +19,7 @@
         }
 
         public IΩ Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IΩ parameter = null;
 

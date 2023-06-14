@@ -4,6 +4,6 @@
 
     public interface IW
     {
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

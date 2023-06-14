@@ -14,6 +14,6 @@
             int day);
 
         IlIndexElement GetElementAt(
-            PositiveInt day);
+            INullableValue<int> day);
     }
 }

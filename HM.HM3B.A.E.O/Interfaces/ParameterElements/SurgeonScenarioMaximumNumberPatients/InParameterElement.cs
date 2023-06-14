@@ -10,6 +10,6 @@
 
         IΛIndexElement ΛIndexElement { get; }
 
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

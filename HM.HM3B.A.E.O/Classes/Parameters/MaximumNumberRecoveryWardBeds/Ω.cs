@@ -11,11 +11,11 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Ω(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             this.Value = value;
         }
 
-        public PositiveInt Value { get; }
+        public INullableValue<int> Value { get; }
     }
 }

@@ -19,7 +19,7 @@
         }
 
         public IW Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IW parameter = null;
 

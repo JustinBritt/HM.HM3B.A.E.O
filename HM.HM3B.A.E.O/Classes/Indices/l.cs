@@ -31,7 +31,7 @@
         }
 
         public IlIndexElement GetElementAt(
-            PositiveInt day)
+            INullableValue<int> day)
         {
             return this.Value
                 .Where(x => x.Value == day)

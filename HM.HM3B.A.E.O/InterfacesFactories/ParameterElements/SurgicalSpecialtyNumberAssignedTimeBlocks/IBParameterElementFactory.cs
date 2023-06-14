@@ -9,6 +9,6 @@
     {
         IBParameterElement Create(
             IjIndexElement jIndexElement,
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

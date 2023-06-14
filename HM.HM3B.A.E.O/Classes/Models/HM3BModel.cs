@@ -55,8 +55,7 @@
             // d
             this.d = indicesAbstractFactory.CreatedFactory().Create(
                 this.Context.Weekdays
-                .Select(x => indexElementsAbstractFactory.CreatedIndexElementFactory().Create(
-                    (PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatedIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // j
@@ -69,7 +68,7 @@
             // l
             this.l = indicesAbstractFactory.CreatelFactory().Create(
                 this.Context.LengthOfStayDays
-                .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // m
@@ -107,7 +106,7 @@
             // Λ
             this.Λ = indicesAbstractFactory.CreateΛFactory().Create(
                 this.Context.Scenarios
-                .Select(x => indexElementsAbstractFactory.CreateΛIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreateΛIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // Cross joins
@@ -202,7 +201,7 @@
                 this.Context.SurgicalSpecialtyNumberAssignedTimeBlocks
                 .Select(x => parameterElementsAbstractFactory.CreateBBarParameterElementFactory().Create(
                     this.j.GetElementAt(x.Key),
-                    (PositiveInt)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // B(s)
@@ -210,7 +209,7 @@
                 this.Context.SurgeonNumberAssignedTimeBlocks
                 .Select(x => parameterElementsAbstractFactory.CreateBsParameterElementFactory().Create(
                     this.s.GetElementAt(x.Key),
-                    (PositiveInt)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // H
@@ -222,7 +221,7 @@
                 this.Context.SurgeonScenarioWeightedAverageSurgicalDurations
                 .Select(x => parameterElementsAbstractFactory.CreatehParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
-                    this.Λ.GetElementAt((PositiveInt)x.Item2),
+                    this.Λ.GetElementAt(x.Item2),
                     x.Item3))
                 .ToImmutableList());
 
@@ -231,7 +230,7 @@
                 this.Context.SurgeonLengthOfStayMaximums
                 .Select(x => parameterElementsAbstractFactory.CreateLParameterElementFactory().Create(
                     this.s.GetElementAt(x.Key),
-                    (PositiveInt)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // n(s, Λ)
@@ -239,8 +238,8 @@
                 this.Context.SurgeonScenarioMaximumNumberPatients
                 .Select(x => parameterElementsAbstractFactory.CreatenParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
-                    this.Λ.GetElementAt((PositiveInt)x.Item2),
-                    (PositiveInt)x.Item3))
+                    this.Λ.GetElementAt(x.Item2),
+                    x.Item3))
                 .ToImmutableList());
 
             // p(s, l, Λ)
@@ -248,14 +247,14 @@
                 this.Context.SurgeonDayScenarioLengthOfStayProbabilities
                 .Select(x => parameterElementsAbstractFactory.CreatepParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
-                    this.l.GetElementAt((PositiveInt)x.Item2),
-                    this.Λ.GetElementAt((PositiveInt)x.Item3),
+                    this.l.GetElementAt(x.Item2),
+                    this.Λ.GetElementAt(x.Item3),
                     (FhirDecimal)x.Item4))
                 .ToImmutableList());
 
             // W
             this.W = parametersAbstractFactory.CreateWFactory().Create(
-                (PositiveInt)this.Context.NumberDaysPerWeek);
+                this.Context.NumberDaysPerWeek);
 
             // Δ(j)
             this.Δ = parametersAbstractFactory.CreateΔFactory().Create(
@@ -279,7 +278,7 @@
                 this.Context.SurgeonScenarioMaximumNumberPatientMeans
                 .Select(x => parameterElementsAbstractFactory.CreateμParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
-                    this.Λ.GetElementAt((PositiveInt)x.Item2),
+                    this.Λ.GetElementAt(x.Item2),
                     (FhirDecimal)x.Item3))
                 .ToImmutableList());
 
@@ -287,7 +286,7 @@
             this.Ρ = parametersAbstractFactory.CreateΡFactory().Create(
                 this.Context.ScenarioProbabilities
                 .Select(x => parameterElementsAbstractFactory.CreateΡParameterElementFactory().Create(
-                    this.Λ.GetElementAt((PositiveInt)x.Key),
+                    this.Λ.GetElementAt(x.Key),
                     (FhirDecimal)x.Value))
                 .ToImmutableList());
 
@@ -296,7 +295,7 @@
                this.Context.SurgeonScenarioMaximumNumberPatientStandardDeviations
                .Select(x => parameterElementsAbstractFactory.CreateσParameterElementFactory().Create(
                    this.s.GetElementAt(x.Item1),
-                   this.Λ.GetElementAt((PositiveInt)x.Item2),
+                   this.Λ.GetElementAt(x.Item2),
                    (FhirDecimal)x.Item3))
                .ToImmutableList());
 
@@ -310,7 +309,7 @@
 
             // Ω
             this.Ω = parametersAbstractFactory.CreateΩFactory().Create(
-                (PositiveInt)this.Context.MaximumNumberRecoveryWardBeds);
+                this.Context.MaximumNumberRecoveryWardBeds);
 
             // Variables
 

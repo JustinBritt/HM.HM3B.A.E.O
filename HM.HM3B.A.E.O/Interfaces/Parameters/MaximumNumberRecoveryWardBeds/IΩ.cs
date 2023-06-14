@@ -4,6 +4,6 @@
 
     public interface IΩ
     {
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }
