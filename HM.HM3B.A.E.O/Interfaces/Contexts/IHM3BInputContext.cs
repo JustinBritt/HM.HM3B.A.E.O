@@ -22,7 +22,7 @@
 
         Bundle Surgeons { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> PlanningHorizon { get; }
+        RedBlackTree<INullableValue<int>, FhirDateTime> PlanningHorizon { get; }
 
         ImmutableSortedSet<INullableValue<int>> Scenarios { get; }
 
