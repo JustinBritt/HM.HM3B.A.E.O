@@ -48,21 +48,21 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model, 
                     indexSet1: this.m.Value.Values, 
-                    indexSet2: this.r.Value)); 
+                    indexSet2: this.r.Value.Values)); 
 
             // w(j, r)
             this.w = variablesAbstractFactory.CreatewFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model,
                     indexSet1: this.j.Value.Values,
-                    indexSet2: this.r.Value)); 
+                    indexSet2: this.r.Value.Values)); 
 
             // y(s, r)
             this.y = variablesAbstractFactory.CreateyFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model,
                     indexSet1: this.s.Value.Values, 
-                    indexSet2: this.r.Value)); 
+                    indexSet2: this.r.Value.Values)); 
 
             // Constraints 1
             this.Model.AddConstraints(

@@ -69,7 +69,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model, 
                     indexSet1: this.m.Value.Values,
-                    indexSet2: this.r.Value)); 
+                    indexSet2: this.r.Value.Values)); 
 
             // Constraints 1
             this.Model.AddConstraints(

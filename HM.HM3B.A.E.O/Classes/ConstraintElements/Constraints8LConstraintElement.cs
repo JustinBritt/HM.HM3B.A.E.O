@@ -24,7 +24,7 @@
             Iz z)
         {
             Expression LHS = Expression.Sum(
-                r.Value
+                r.Value.Values
                 .Select(
                     y => x.Value[sIndexElement, y, tIndexElement]));
 
