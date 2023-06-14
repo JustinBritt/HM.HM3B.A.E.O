@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.Patterns.Visitor;
+
     using OPTANO.Modeling.Optimization;
     using OPTANO.Modeling.Optimization.Enums;
 
@@ -28,8 +30,7 @@
     using HM.HM3B.A.E.O.Interfaces.Parameters.TimeBlockLength;
     using HM.HM3B.A.E.O.Interfaces.Variables;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
-    using NGenerics.Patterns.Visitor;
-
+    
     internal abstract class HM3BModel
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
