@@ -6,6 +6,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Interfaces.Contexts;
 
     public interface IHM3BInputContextFactory
