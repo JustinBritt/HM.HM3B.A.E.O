@@ -29,7 +29,7 @@
             IEBS EBS)
         {
             return TEBSFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(w => TEBSResultElementCalculation.Calculate(
                     TEBSResultElementFactory,
                     w,

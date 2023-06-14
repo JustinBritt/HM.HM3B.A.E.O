@@ -37,7 +37,7 @@
             IVarianceI varianceI)
         {
             return υ2Factory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(i => υ2ResultElementCalculation.Calculate(
                     normalFactory,
                     υ2ResultElementFactory,

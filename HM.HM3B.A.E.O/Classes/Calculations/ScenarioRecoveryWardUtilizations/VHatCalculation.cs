@@ -37,7 +37,7 @@
             Iυ2 υ2)
         {
             return VHatFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(i => VHatResultElementCalculation.Calculate(
                     normalFactory,
                     VHatResultElementFactory,

@@ -25,7 +25,7 @@
             Interfaces.Results.ScenarioTotalExpectedBedShortages.ITEBS TEBS)
         {
             return TEBSFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(w =>
                 Ρ.GetElementAtAsdecimal(
                     w)

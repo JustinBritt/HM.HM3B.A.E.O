@@ -28,7 +28,7 @@
             ISurgeonScenarioNumberPatients surgeonScenarioNumberPatients)
         {
             return scenarioNumberPatientsFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                     .Select(i => scenarioNumberPatientsResultElementCalculation.Calculate(
                         scenarioNumberPatientsResultElementFactory,
                         i,

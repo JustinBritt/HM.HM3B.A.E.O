@@ -34,7 +34,7 @@
             Ix x)
         {
             return scenarioUtilizedTimesFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(w => scenarioUtilizedTimesResultElementCalculation.Calculate(
                     scenarioUtilizedTimesResultElementFactory,
                     w,

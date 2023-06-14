@@ -30,7 +30,7 @@
             IScenarioUnutilizedTimes scenarioUnutilizedTimes)
         {
             return scenarioUnderutilizationsFactory.Create(
-                Λ.Value
+                Λ.Value.Values
                 .Select(w => scenarioUnderutilizationsResultElementCalculation.Calculate(
                     scenarioUnderutilizationsResultElementFactory,
                     w,
