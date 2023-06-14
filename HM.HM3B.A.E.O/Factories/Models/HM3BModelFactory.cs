@@ -20,6 +20,7 @@
         }
 
         public IHM3BModel Create(
+            IComparersAbstractFactory comparersAbstractFactory,
             IConstraintElementsAbstractFactory constraintElementsAbstractFactory,
             IConstraintsAbstractFactory constraintsAbstractFactory,
             ICrossJoinElementsAbstractFactory crossJoinElementsAbstractFactory,
@@ -41,6 +42,7 @@
                 model = HM3BEncodingEnum switch
                 {
                     HM3BEncodingEnum.E000 => new HM3B000Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -55,6 +57,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E001 => new HM3B001Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -69,6 +72,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E010 => new HM3B010Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -83,6 +87,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E011 => new HM3B011Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -97,6 +102,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E100 => new HM3B100Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -111,6 +117,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E101 => new HM3B101Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -125,6 +132,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E110 => new HM3B110Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
@@ -139,6 +147,7 @@
                         HM3BInputContext),
 
                     HM3BEncodingEnum.E111 => new HM3B111Model(
+                        comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
                         crossJoinElementsAbstractFactory,
