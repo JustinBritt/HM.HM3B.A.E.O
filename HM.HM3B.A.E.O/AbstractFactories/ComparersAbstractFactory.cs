@@ -16,6 +16,24 @@
         {
         }
 
+        public IDeviceComparerFactory CreateDeviceComparerFactory()
+        {
+            IDeviceComparerFactory factory = null;
+
+            try
+            {
+                factory = new DeviceComparerFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
         public IOrganizationComparerFactory CreateOrganizationComparerFactory()
         {
             IOrganizationComparerFactory factory = null;
