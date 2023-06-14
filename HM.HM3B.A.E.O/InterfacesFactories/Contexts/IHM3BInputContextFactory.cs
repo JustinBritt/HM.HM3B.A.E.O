@@ -15,7 +15,7 @@
         IHM3BInputContext Create(
             ImmutableSortedSet<INullableValue<int>> weekdays,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> surgicalSpecialties,
-            ImmutableList<INullableValue<int>> lengthOfStayDays,
+            ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             Bundle machines,
             Bundle operatingRooms,
             Bundle surgeons,
