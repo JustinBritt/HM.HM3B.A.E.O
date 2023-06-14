@@ -19,7 +19,7 @@
         }
 
         public IΛIndexElement Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IΛIndexElement indexElement = null;
 

@@ -11,7 +11,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public lIndexElement(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             this.Value = value;
         }
@@ -19,6 +19,6 @@
         /// <summary>
         /// Gets the day.
         /// </summary>
-        public PositiveInt Value { get; }
+        public INullableValue<int> Value { get; }
     }
 }

@@ -7,6 +7,6 @@
     public interface IlIndexElementFactory
     {
         IlIndexElement Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

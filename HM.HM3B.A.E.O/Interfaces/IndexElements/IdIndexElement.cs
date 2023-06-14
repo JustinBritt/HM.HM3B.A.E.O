@@ -7,6 +7,6 @@
         /// <summary>
         /// Gets the weekday.
         /// </summary>
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }
