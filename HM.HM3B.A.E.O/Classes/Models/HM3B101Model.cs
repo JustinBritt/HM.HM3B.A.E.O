@@ -66,7 +66,7 @@
             this.y = variablesAbstractFactory.CreateyFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model,
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.r.Value)); 
 
             // Constraints 1

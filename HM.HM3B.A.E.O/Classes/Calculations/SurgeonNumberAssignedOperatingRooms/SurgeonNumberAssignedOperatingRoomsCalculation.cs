@@ -28,7 +28,7 @@
             Ix x)
         {
             return surgeonNumberAssignedOperatingRoomsFactory.Create(
-                s.Value
+                s.Value.Values
                 .Select(w => surgeonNumberAssignedOperatingRoomsResultElementCalculation.Calculate(
                     surgeonNumberAssignedOperatingRoomsResultElementFactory,
                     w,

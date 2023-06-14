@@ -26,7 +26,7 @@
             Interfaces.Variables.Iy y)
         {
             Expression LHS = Expression.Sum(
-                s.Value
+                s.Value.Values
                 .Select(
                     x => y.Value[x, rIndexElement]
                     *
@@ -51,7 +51,7 @@
             Iζ ζ,
             Interfaces.Variables.Iv v)
         {
-            int LHS = s.Value
+            int LHS = s.Value.Values
                 .Select(
                 x => y.GetElementAtAsint(
                     x,
@@ -80,7 +80,7 @@
             Interfaces.Variables.Iy y)
         {
             Expression LHS = Expression.Sum(
-                s.Value
+                s.Value.Values
                 .Select(
                     x => y.Value[x, rIndexElement]
                     *

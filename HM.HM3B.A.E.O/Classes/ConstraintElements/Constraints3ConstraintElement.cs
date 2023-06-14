@@ -23,7 +23,7 @@
             Iγ γ)
         {
             Expression LHS = Expression.Sum(
-                s.Value
+                s.Value.Values
                 .Select(
                     x => b.Value[x, rIndexElement]));
 

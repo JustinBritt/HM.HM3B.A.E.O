@@ -91,6 +91,7 @@
 
             // s
             this.s = indicesAbstractFactory.CreatesFactory().Create(
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.Context.Surgeons
                 .Entry
                 .Where(x => x.Resource is Organization)
@@ -133,60 +134,60 @@
 
             // sd
             this.sd = crossJoinsAbstractFactory.CreatesdFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.d.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesdCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // sdt 
             this.sdt = crossJoinsAbstractFactory.CreatesdtFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.d.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesdCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.t.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesdtCrossJoinElementFactory().Create(a.sIndexElement, a.dIndexElement, b))
                 .ToImmutableList());
 
             // slΛ
             this.slΛ = crossJoinsAbstractFactory.CreateslΛFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.l.Value, (a, b) => crossJoinElementsAbstractFactory.CreateslCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.Λ.Value, (a, b) => crossJoinElementsAbstractFactory.CreateslΛCrossJoinElementFactory().Create(a.sIndexElement, a.lIndexElement, b))
                 .ToImmutableList());
 
             // sr
             this.sr = crossJoinsAbstractFactory.CreatesrFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // srd
             this.srd = crossJoinsAbstractFactory.CreatesrdFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.d.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrdCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
             // srj
             this.srj = crossJoinsAbstractFactory.CreatesrjFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.j.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesrjCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
             // srt
             this.srt = crossJoinsAbstractFactory.CreatesrtFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.t.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesrtCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
             // st
             this.st = crossJoinsAbstractFactory.CreatestFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.t.Value, (a, b) => crossJoinElementsAbstractFactory.CreatestCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // sΛ
             this.sΛ = crossJoinsAbstractFactory.CreatesΛFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.Λ.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesΛCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -319,7 +320,7 @@
             this.b = variablesAbstractFactory.CreatebFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.r.Value, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => int.MaxValue, 
@@ -329,14 +330,14 @@
             this.u = variablesAbstractFactory.CreateuFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.d.Value));
 
             // x(s, r, t)
             this.x = variablesAbstractFactory.CreatexFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.r.Value, 
                     indexSet3: this.t.Value)); 
 
@@ -344,14 +345,14 @@
             this.z = variablesAbstractFactory.CreatezFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().CreateBinary(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.t.Value));
 
             // β(s, r, d)
             this.β = variablesAbstractFactory.CreateβFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.s.Value,
+                    indexSet1: this.s.Value.Values,
                     indexSet2: this.r.Value, 
                     indexSet3: this.d.Value, 
                     lowerBoundGenerator: (a, b, c) => 0, 
@@ -371,7 +372,7 @@
 
             // Constraints 2
             this.Model.AddConstraints(
-                this.s.Value
+                this.s.Value.Values
                 .Select(
                     x => constraintElementsAbstractFactory.CreateConstraints2ConstraintElementFactory().Create(
                         x,
