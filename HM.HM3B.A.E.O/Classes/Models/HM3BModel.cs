@@ -75,6 +75,7 @@
 
             // m
             this.m = indicesAbstractFactory.CreatemFactory().Create(
+                comparersAbstractFactory.CreateDeviceComparerFactory().Create(),
                 this.Context.Machines
                 .Entry
                 .Where(x => x.Resource is Device)
@@ -122,7 +123,7 @@
 
             // mr
             this.mr = crossJoinsAbstractFactory.CreatemrFactory().Create(
-                this.m.Value
+                this.m.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatemrCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
