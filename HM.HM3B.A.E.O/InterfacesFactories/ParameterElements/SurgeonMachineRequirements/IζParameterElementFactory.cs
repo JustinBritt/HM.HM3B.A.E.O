@@ -10,6 +10,6 @@
         IζParameterElement Create(
             IsIndexElement sIndexElement,
             ImIndexElement mIndexElement,
-            FhirBoolean value);
+            INullableValue<bool> value);
     }
 }

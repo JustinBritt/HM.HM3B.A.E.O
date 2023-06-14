@@ -10,6 +10,6 @@
         IyParameterElement Create(
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
-            FhirBoolean value);
+            INullableValue<bool> value);
     }
 }

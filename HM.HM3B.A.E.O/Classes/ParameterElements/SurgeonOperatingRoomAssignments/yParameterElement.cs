@@ -14,7 +14,7 @@
         public yParameterElement(
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.sIndexElement = sIndexElement;
 
@@ -27,6 +27,6 @@
 
         public IrIndexElement rIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }

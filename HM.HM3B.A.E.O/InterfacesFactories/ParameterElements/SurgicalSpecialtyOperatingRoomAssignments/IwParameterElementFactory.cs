@@ -10,6 +10,6 @@
         IwParameterElement Create(
             IjIndexElement jIndexElement,
             IrIndexElement rIndexElement,
-            FhirBoolean value);
+            INullableValue<bool> value);
     }
 }

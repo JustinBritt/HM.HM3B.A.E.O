@@ -13,7 +13,7 @@
 
         public ψParameterElement(
             ItIndexElement tIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.tIndexElement = tIndexElement;
 
@@ -22,6 +22,6 @@
 
         public ItIndexElement tIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }

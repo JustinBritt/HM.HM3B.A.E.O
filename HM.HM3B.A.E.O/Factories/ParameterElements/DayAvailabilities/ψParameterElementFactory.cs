@@ -21,7 +21,7 @@
 
         public IψParameterElement Create(
             ItIndexElement tIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             IψParameterElement parameterElement = null;
 

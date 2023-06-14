@@ -14,7 +14,7 @@
         public wParameterElement(
             IjIndexElement jIndexElement,
             IrIndexElement rIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.jIndexElement = jIndexElement;
 
@@ -27,6 +27,6 @@
 
         public IrIndexElement rIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }

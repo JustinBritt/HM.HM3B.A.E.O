@@ -270,7 +270,7 @@
                 .Select(x => parameterElementsAbstractFactory.CreateζParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
                     this.m.GetElementAt(x.Item2),
-                    (FhirBoolean)x.Item3))
+                    x.Item3))
                 .ToImmutableList());
 
             // μ(s, Λ)
@@ -304,7 +304,7 @@
                 this.Context.DayAvailabilities
                 .Select(x => parameterElementsAbstractFactory.CreateψParameterElementFactory().Create(
                     this.t.GetElementAt(x.Key),
-                    (FhirBoolean)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // Ω

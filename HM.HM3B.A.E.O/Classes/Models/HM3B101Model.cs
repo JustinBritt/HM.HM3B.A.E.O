@@ -50,7 +50,7 @@
                 .Select(x => parameterElementsAbstractFactory.CreatewParameterElementFactory().Create(
                     this.j.GetElementAt(x.Item1),
                     this.r.GetElementAt(x.Item2),
-                    (FhirBoolean)x.Item3))
+                    x.Item3))
                 .ToImmutableList());
 
             // v(m, r)

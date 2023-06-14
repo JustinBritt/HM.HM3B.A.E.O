@@ -9,6 +9,6 @@
     {
         IψParameterElement Create(
             ItIndexElement tIndexElement,
-            FhirBoolean value);
+            INullableValue<bool> value);
     }
 }

@@ -14,7 +14,7 @@
         public vParameterElement(
             ImIndexElement mIndexElement,
             IrIndexElement rIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.mIndexElement = mIndexElement;
 
@@ -27,6 +27,6 @@
 
         public IrIndexElement rIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }

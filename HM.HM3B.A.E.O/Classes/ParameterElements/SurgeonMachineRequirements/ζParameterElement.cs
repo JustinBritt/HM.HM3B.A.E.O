@@ -14,7 +14,7 @@
         public ζParameterElement(
             IsIndexElement sIndexElement,
             ImIndexElement mIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.sIndexElement = sIndexElement;
 
@@ -27,6 +27,6 @@
 
         public ImIndexElement mIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }
