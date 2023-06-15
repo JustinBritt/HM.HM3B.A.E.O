@@ -1,5 +1,7 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.IndexElements
 {
+    using System;
+
     using log4net;
 
     using Hl7.Fhir.Model;
@@ -18,5 +20,14 @@
 
         /// <inheritdoc/>
         public Organization Value { get; }
+
+        /// <inheritdoc/>
+        public int CompareTo(
+            IrIndexElement other)
+        {
+            return String.CompareOrdinal(
+                other.Value.Id,
+                this.Value.Id);
+        }
     }
 }
