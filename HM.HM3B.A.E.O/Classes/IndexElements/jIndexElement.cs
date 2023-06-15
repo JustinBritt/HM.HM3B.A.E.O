@@ -23,7 +23,7 @@
 
         /// <inheritdoc/>
         public int CompareTo(
-            IrIndexElement other)
+            IjIndexElement other)
         {
             return String.CompareOrdinal(
                 other.Value.Id,
