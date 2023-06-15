@@ -34,6 +34,24 @@
             return factory;
         }
 
+        public IFhirDateTimeComparerFactory CreateFhirDateTimeComparerFactory()
+        {
+            IFhirDateTimeComparerFactory factory = null;
+
+            try
+            {
+                factory = new FhirDateTimeComparerFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
         public ILocationComparerFactory CreateLocationComparerFactory()
         {
             ILocationComparerFactory factory = null;

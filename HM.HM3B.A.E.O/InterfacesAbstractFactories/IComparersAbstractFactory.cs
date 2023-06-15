@@ -6,6 +6,8 @@
     {
         IDeviceComparerFactory CreateDeviceComparerFactory();
 
+        IFhirDateTimeComparerFactory CreateFhirDateTimeComparerFactory();
+
         ILocationComparerFactory CreateLocationComparerFactory();
 
         INullableValueintComparerFactory CreateNullableValueintComparerFactory();
