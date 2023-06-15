@@ -16,9 +16,7 @@
             this.Value = value;
         }
 
-        /// <summary>
-        /// Gets the operating room.
-        /// </summary>
+        /// <inheritdoc/>
         public Location Value { get; }
     }
 }

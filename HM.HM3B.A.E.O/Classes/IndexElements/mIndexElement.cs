@@ -16,9 +16,7 @@
             this.Value = value;
         }
 
-        /// <summary>
-        /// Gets the machine.
-        /// </summary>
+        /// <inheritdoc/>
         public Device Value { get; }
     }
 }
