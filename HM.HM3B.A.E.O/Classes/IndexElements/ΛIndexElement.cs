@@ -16,9 +16,7 @@
             this.Value = value;
         }
 
-        /// <summary>
-        /// Gets the scenario.
-        /// </summary>
+        /// <inheritdoc/>
         public INullableValue<int> Value { get; }
     }
 }
