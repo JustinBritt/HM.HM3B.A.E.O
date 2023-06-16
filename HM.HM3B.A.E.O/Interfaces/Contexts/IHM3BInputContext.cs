@@ -28,7 +28,7 @@
 
         ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgicalSpecialtyNumberAssignedTimeBlocks { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgeonNumberAssignedTimeBlocks { get; }
+        RedBlackTree<Organization, INullableValue<int>> SurgeonNumberAssignedTimeBlocks { get; }
 
         Duration TimeBlockLength { get; }
 
