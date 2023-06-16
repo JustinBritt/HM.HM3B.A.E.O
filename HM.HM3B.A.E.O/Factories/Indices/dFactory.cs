@@ -5,9 +5,13 @@
 
     using log4net;
 
+    using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Indices;
+    using HM.HM3B.A.E.O.Interfaces.Comparers;
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
-    using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.InterfacesFactories.Indices;
 
     internal sealed class dFactory : IdFactory
@@ -18,15 +22,18 @@
         {
         }
 
-        public Id Create(
+        public HM.HM3B.A.E.O.Interfaces.Indices.Id Create(
+            INullableValueintComparer nullableValueintComparer,
             ImmutableList<IdIndexElement> value)
         {
-            Id index = null;
+            HM.HM3B.A.E.O.Interfaces.Indices.Id index = null;
 
             try
             {
                 index = new d(
-                    value);
+                    this.CreateRedBlackTree(
+                        nullableValueintComparer,
+                        value));
             }
             catch (Exception exception)
             {
@@ -36,6 +43,23 @@
             }
 
             return index;
+        }
+
+        private RedBlackTree<INullableValue<int>, IdIndexElement> CreateRedBlackTree(
+            INullableValueintComparer nullableValueintComparer,
+            ImmutableList<IdIndexElement> value)
+        {
+            RedBlackTree<INullableValue<int>, IdIndexElement> redBlackTree = new RedBlackTree<INullableValue<int>, IdIndexElement>(
+                nullableValueintComparer);
+
+            foreach (IdIndexElement dIndexElement in value)
+            {
+                redBlackTree.Add(
+                    dIndexElement.Value,
+                    dIndexElement);
+            }
+
+            return redBlackTree;
         }
     }
 }
