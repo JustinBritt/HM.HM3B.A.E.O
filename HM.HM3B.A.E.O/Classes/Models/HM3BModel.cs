@@ -73,6 +73,7 @@
 
             // l
             this.l = indicesAbstractFactory.CreatelFactory().Create(
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.Context.LengthOfStayDays
                 .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create(x))
                 .ToImmutableList());
@@ -158,7 +159,7 @@
             // slΛ
             this.slΛ = crossJoinsAbstractFactory.CreateslΛFactory().Create(
                 this.s.Value.Values
-                .SelectMany(b => this.l.Value, (a, b) => crossJoinElementsAbstractFactory.CreateslCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.l.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreateslCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.Λ.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreateslΛCrossJoinElementFactory().Create(a.sIndexElement, a.lIndexElement, b))
                 .ToImmutableList());
 

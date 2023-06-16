@@ -1,11 +1,12 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Indices
 {
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
@@ -15,17 +16,17 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public l(
-            ImmutableList<IlIndexElement> value)
+            RedBlackTree<INullableValue<int>, IlIndexElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IlIndexElement> Value { get; }
+        public RedBlackTree<INullableValue<int>, IlIndexElement> Value { get; }
 
         public IlIndexElement GetElementAt(
             int day)
         {
-            return this.Value
+            return this.Value.Values
                 .Where(x => x.Value.Value.Value == day)
                 .SingleOrDefault();
         }
@@ -33,9 +34,7 @@
         public IlIndexElement GetElementAt(
             INullableValue<int> day)
         {
-            return this.Value
-                .Where(x => x.Value == day)
-                .SingleOrDefault();
+            return this.Value[day];
         }
     }
 }
