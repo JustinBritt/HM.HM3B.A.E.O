@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonLengthOfStayMaximums
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonLengthOfStayMaximums;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonLengthOfStayMaximums;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonLengthOfStayMaximums;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonLengthOfStayMaximums;
@@ -19,7 +21,7 @@
         }
 
         public IL Create(
-            ImmutableList<ILParameterElement> value)
+            RedBlackTree<IsIndexElement, ILParameterElement> value)
         {
             IL parameter = null;
 

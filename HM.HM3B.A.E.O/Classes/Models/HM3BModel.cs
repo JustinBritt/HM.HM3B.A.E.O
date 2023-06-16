@@ -250,12 +250,15 @@
                 surgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor.RedBlackTree);
 
             // L(s)
+            ISurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>> surgeonLengthOfStayMaximumsVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreateLParameterElementFactory(),
+                this.s);
+
+            this.Context.SurgeonLengthOfStayMaximums.AcceptVisitor(
+                surgeonLengthOfStayMaximumsVisitor);
+
             this.L = parametersAbstractFactory.CreateLFactory().Create(
-                this.Context.SurgeonLengthOfStayMaximums
-                .Select(x => parameterElementsAbstractFactory.CreateLParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                surgeonLengthOfStayMaximumsVisitor.RedBlackTree);
 
             // n(s, Λ)
             this.n = parametersAbstractFactory.CreatenFactory().Create(
