@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonScenarioWeightedAverageSurgicalDurations
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonScenarioWeightedAverageSurgicalDurations;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioWeightedAverageSurgicalDurations;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonScenarioWeightedAverageSurgicalDurations;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonScenarioWeightedAverageSurgicalDurations;
@@ -19,7 +21,7 @@
         }
 
         public Ih Create(
-            ImmutableList<IhParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IhParameterElement>> value)
         {
             Ih parameter = null;
 

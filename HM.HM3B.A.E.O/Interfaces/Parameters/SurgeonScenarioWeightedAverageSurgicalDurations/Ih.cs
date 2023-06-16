@@ -1,13 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonScenarioWeightedAverageSurgicalDurations
 {
-    using System.Collections.Immutable;
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioWeightedAverageSurgicalDurations;
 
     public interface Ih
     {
-        ImmutableList<IhParameterElement> Value { get; }
+        RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IhParameterElement>> Value { get; }
 
         decimal GetElementAtAsdecimal(
             IsIndexElement sIndexElement,
