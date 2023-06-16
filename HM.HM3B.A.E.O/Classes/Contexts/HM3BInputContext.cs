@@ -25,7 +25,7 @@
             Bundle surgeons,
             RedBlackTree<INullableValue<int>, FhirDateTime> planningHorizon,
             ImmutableSortedSet<INullableValue<int>> scenarios,
-            ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgicalSpecialtyNumberAssignedTimeBlocks,
+            RedBlackTree<Organization, INullableValue<int>> surgicalSpecialtyNumberAssignedTimeBlocks,
             RedBlackTree<Organization, INullableValue<int>> surgeonNumberAssignedTimeBlocks,
             Duration timeBlockLength,
             ImmutableList<Tuple<Organization, INullableValue<int>, Duration>> surgeonScenarioWeightedAverageSurgicalDurations,
@@ -131,7 +131,7 @@
 
         public ImmutableSortedSet<INullableValue<int>> Scenarios { get; }
 
-        public ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgicalSpecialtyNumberAssignedTimeBlocks { get; }
+        public RedBlackTree<Organization, INullableValue<int>> SurgicalSpecialtyNumberAssignedTimeBlocks { get; }
 
         public RedBlackTree<Organization, INullableValue<int>> SurgeonNumberAssignedTimeBlocks { get; }
 
