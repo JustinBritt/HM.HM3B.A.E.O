@@ -315,12 +315,15 @@
                 .ToImmutableList());
 
             // Ρ(Λ)
+            IScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>> scenarioProbabilitiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.ScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>>(
+                parameterElementsAbstractFactory.CreateΡParameterElementFactory(),
+                this.Λ);
+
+            this.Context.ScenarioProbabilities.AcceptVisitor(
+                scenarioProbabilitiesVisitor);
+
             this.Ρ = parametersAbstractFactory.CreateΡFactory().Create(
-                this.Context.ScenarioProbabilities
-                .Select(x => parameterElementsAbstractFactory.CreateΡParameterElementFactory().Create(
-                    this.Λ.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                scenarioProbabilitiesVisitor.RedBlackTree);
 
             // σ(s, Λ)
             this.σ = parametersAbstractFactory.CreateσFactory().Create(
