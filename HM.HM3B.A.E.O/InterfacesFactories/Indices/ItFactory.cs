@@ -1,13 +1,15 @@
 ﻿namespace HM.HM3B.A.E.O.InterfacesFactories.Indices
 {
-    using System.Collections.Immutable;
+    using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
-
+    
     public interface ItFactory
     {
         It Create(
-            ImmutableList<ItIndexElement> value);
+            RedBlackTree<FhirDateTime, ItIndexElement> value);
     }
 }

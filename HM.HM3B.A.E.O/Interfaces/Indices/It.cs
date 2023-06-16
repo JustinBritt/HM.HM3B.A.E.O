@@ -4,11 +4,13 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
 
     public interface It
     {
-        ImmutableList<ItIndexElement> Value { get; }
+        RedBlackTree<FhirDateTime, ItIndexElement> Value { get; }
 
         ItIndexElement GetElementAt(
             int value);

@@ -28,7 +28,7 @@
         {
             return TEBSResultElementFactory.Create(
                 ΛIndexElement,
-                t.Value
+                t.Value.Values
                 .Select(w => EBS.GetElementAtAsdecimal(
                     w,
                     ΛIndexElement))

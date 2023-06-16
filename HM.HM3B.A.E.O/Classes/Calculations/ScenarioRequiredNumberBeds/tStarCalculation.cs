@@ -29,7 +29,7 @@
             IVarianceI varianceI,
             Iυ2 υ2)
         {
-            return t.Value
+            return t.Value.Values
                 .Select(i =>
                 KeyValuePair.Create(
                     i,

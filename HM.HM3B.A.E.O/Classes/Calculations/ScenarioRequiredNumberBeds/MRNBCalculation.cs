@@ -29,7 +29,7 @@
             decimal υ2)
         {
             return (int)Math.Ceiling(
-                t.Value
+                t.Value.Values
                 .Select(i => RNBCalculation.Calculate(
                     normalFactory,
                     i,

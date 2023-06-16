@@ -28,7 +28,7 @@
                     x => b.Value[x, rIndexElement]));
 
             Expression RHS = Expression.Sum(
-                t.Value
+                t.Value.Values
                 .Select(
                     x => γ.Value[rIndexElement, x]));
 
