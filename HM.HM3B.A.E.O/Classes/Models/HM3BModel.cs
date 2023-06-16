@@ -222,12 +222,15 @@
                 surgicalSpecialtyNumberAssignedTimeBlocksVisitor.RedBlackTree);
 
             // B(s)
+            ISurgeonNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>> surgeonNumberAssignedTimeBlocksVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreateBsParameterElementFactory(),
+                this.s);
+
+            this.Context.SurgeonNumberAssignedTimeBlocks.AcceptVisitor(
+                surgeonNumberAssignedTimeBlocksVisitor);
+
             this.Bs = parametersAbstractFactory.CreateBsFactory().Create(
-                this.Context.SurgeonNumberAssignedTimeBlocks
-                .Select(x => parameterElementsAbstractFactory.CreateBsParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                surgeonNumberAssignedTimeBlocksVisitor.RedBlackTree);
 
             // H
             this.H = parametersAbstractFactory.CreateHFactory().Create(

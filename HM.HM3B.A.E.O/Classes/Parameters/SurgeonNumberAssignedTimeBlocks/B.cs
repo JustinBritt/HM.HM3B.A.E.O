@@ -1,9 +1,8 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Parameters.SurgeonNumberAssignedTimeBlocks
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonNumberAssignedTimeBlocks;
@@ -14,20 +13,17 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public B(
-            ImmutableList<IBParameterElement> value)
+            RedBlackTree<IsIndexElement, IBParameterElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IBParameterElement> Value { get; }
+        public RedBlackTree<IsIndexElement, IBParameterElement> Value { get; }
 
         public int GetElementAtAsint(
             IsIndexElement sIndexElement)
         {
-            return this.Value
-                .Where(x => x.sIndexElement == sIndexElement)
-                .Select(x => x.Value.Value.Value)
-                .SingleOrDefault();
+            return this.Value[sIndexElement].Value.Value.Value;
         }
     }
 }

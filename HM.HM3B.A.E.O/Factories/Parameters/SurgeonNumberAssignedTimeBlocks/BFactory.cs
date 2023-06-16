@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonNumberAssignedTimeBlocks
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonNumberAssignedTimeBlocks;
@@ -19,7 +21,7 @@
         }
 
         public IB Create(
-            ImmutableList<IBParameterElement> value)
+            RedBlackTree<IsIndexElement, IBParameterElement> value)
         {
             IB parameter = null;
 
