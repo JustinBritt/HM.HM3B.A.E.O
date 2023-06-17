@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonDayScenarioLengthOfStayProbabilities
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonDayScenarioLengthOfStayProbabilities;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonDayScenarioLengthOfStayProbabilities;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonDayScenarioLengthOfStayProbabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonDayScenarioLengthOfStayProbabilities;
@@ -19,7 +21,7 @@
         }
 
         public Ip Create(
-            ImmutableList<IpParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>>> value)
         {
             Ip parameter = null;
 

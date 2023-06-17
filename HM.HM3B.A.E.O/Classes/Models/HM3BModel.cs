@@ -273,14 +273,17 @@
                 surgeonScenarioMaximumNumberPatientsOuterVisitor.RedBlackTree);
 
             // p(s, l, Λ)
+            ISurgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> surgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>>(
+                parameterElementsAbstractFactory.CreatepParameterElementFactory(),
+                this.l,
+                this.s,
+                this.Λ);
+
+            this.Context.SurgeonDayScenarioLengthOfStayProbabilities.AcceptVisitor(
+                surgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor);
+
             this.p = parametersAbstractFactory.CreatepFactory().Create(
-                this.Context.SurgeonDayScenarioLengthOfStayProbabilities
-                .Select(x => parameterElementsAbstractFactory.CreatepParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Item1),
-                    this.l.GetElementAt(x.Item2),
-                    this.Λ.GetElementAt(x.Item3),
-                    x.Item4))
-                .ToImmutableList());
+                surgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor.RedBlackTree);
 
             // W
             this.W = parametersAbstractFactory.CreateWFactory().Create(
