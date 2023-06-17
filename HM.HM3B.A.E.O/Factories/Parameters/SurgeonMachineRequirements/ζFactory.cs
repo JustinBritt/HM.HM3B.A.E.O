@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonMachineRequirements
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonMachineRequirements;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonMachineRequirements;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonMachineRequirements;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonMachineRequirements;
@@ -19,7 +21,7 @@
         }
 
         public Iζ Create(
-            ImmutableList<IζParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<ImIndexElement, IζParameterElement>> value)
         {
             Iζ parameter = null;
 
