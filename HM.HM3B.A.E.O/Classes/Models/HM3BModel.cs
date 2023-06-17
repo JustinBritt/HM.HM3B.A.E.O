@@ -338,13 +338,16 @@
                 scenarioProbabilitiesVisitor.RedBlackTree);
 
             // σ(s, Λ)
+            ISurgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
+                parameterElementsAbstractFactory.CreateσParameterElementFactory(),
+                this.s,
+                this.Λ);
+
+            this.Context.SurgeonScenarioMaximumNumberPatientStandardDeviations.AcceptVisitor(
+                surgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor);
+
             this.σ = parametersAbstractFactory.CreateσFactory().Create(
-               this.Context.SurgeonScenarioMaximumNumberPatientStandardDeviations
-               .Select(x => parameterElementsAbstractFactory.CreateσParameterElementFactory().Create(
-                   this.s.GetElementAt(x.Item1),
-                   this.Λ.GetElementAt(x.Item2),
-                   x.Item3))
-               .ToImmutableList());
+                surgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor.RedBlackTree);
 
             // ψ(t)
             IDayAvailabilitiesVisitor<FhirDateTime, INullableValue<bool>> dayAvailabilitiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.DayAvailabilitiesVisitor<FhirDateTime, INullableValue<bool>>(

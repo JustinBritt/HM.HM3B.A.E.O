@@ -44,7 +44,7 @@
             RedBlackTree<Organization, RedBlackTree<Device, INullableValue<bool>>> surgeonMachineRequirements,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientMeans,
             RedBlackTree<INullableValue<int>, INullableValue<decimal>> scenarioProbabilities,
-            ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviations,
+            RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviations,
             RedBlackTree<FhirDateTime, INullableValue<bool>> dayAvailabilities,
             INullableValue<int> maximumNumberRecoveryWardBeds)
         {

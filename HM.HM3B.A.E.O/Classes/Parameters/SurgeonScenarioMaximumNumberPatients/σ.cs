@@ -1,9 +1,8 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Parameters.SurgeonScenarioMaximumNumberPatients
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioMaximumNumberPatients;
@@ -14,21 +13,18 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public σ(
-            ImmutableList<IσParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IσParameterElement>> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IσParameterElement> Value { get; }
+        public RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IσParameterElement>> Value { get; }
 
         public decimal GetElementAtAsdecimal(
             IsIndexElement sIndexElement,
             IΛIndexElement ΛIndexElement)
         {
-            return this.Value
-                .Where(x => x.sIndexElement == sIndexElement && x.ΛIndexElement == ΛIndexElement)
-                .Select(x => x.Value.Value.Value)
-                .SingleOrDefault();
+            return this.Value[sIndexElement][ΛIndexElement].Value.Value.Value;
         }
     }
 }

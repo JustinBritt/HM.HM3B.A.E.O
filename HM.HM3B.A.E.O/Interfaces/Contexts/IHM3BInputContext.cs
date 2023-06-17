@@ -54,7 +54,7 @@
 
         RedBlackTree<INullableValue<int>, INullableValue<decimal>> ScenarioProbabilities { get; }
 
-        ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<decimal>>> SurgeonScenarioMaximumNumberPatientStandardDeviations { get; }
+        RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> SurgeonScenarioMaximumNumberPatientStandardDeviations { get; }
 
         RedBlackTree<FhirDateTime, INullableValue<bool>> DayAvailabilities { get; }
 
