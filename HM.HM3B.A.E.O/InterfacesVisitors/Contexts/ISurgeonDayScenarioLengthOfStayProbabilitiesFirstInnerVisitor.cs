@@ -14,5 +14,6 @@
         where TKey : INullableValue<int>
         where TValue : RedBlackTree<INullableValue<int>, INullableValue<decimal>>
     {
+        RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>> RedBlackTree { get; }
     }
 }
