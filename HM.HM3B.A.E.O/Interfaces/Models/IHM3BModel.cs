@@ -21,6 +21,8 @@
         /// </summary>
         Model Model { get; }
 
+        Id d { get; }
+
         Il l { get; }
 
         Ir r { get; }
