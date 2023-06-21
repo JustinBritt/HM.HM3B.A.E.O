@@ -1,8 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Results.SurgeonOperatingRoomAssignments
 {
-    using System;
-    using System.Collections.Immutable;
-
     using Hl7.Fhir.Model;
 
     using NGenerics.DataStructures.Trees;
@@ -15,7 +12,7 @@
     {
         RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>> Value { get; }
 
-        ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> GetValueForOutputContext(
+        RedBlackTree<Organization, RedBlackTree<Location, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory);
     }
 }
