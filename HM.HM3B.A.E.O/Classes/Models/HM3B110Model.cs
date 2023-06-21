@@ -1,15 +1,18 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Models
 {
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+    using NGenerics.Patterns.Visitor;
+
     using HM.HM3B.A.E.O.InterfacesAbstractFactories;
     using HM.HM3B.A.E.O.Interfaces.Contexts;
     using HM.HM3B.A.E.O.Interfaces.Models;
+    using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
     internal sealed class HM3B110Model : 
         HM3BModel,
@@ -47,13 +50,16 @@
                 HM3BInputContext)
         {
             // y(s, r)
+            ISurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>> surgeonOperatingRoomAssignmentsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>>(
+                parameterElementsAbstractFactory.CreateyParameterElementFactory(),
+                this.r,
+                this.s);
+
+            this.Context.SurgeonOperatingRoomAssignments.AcceptVisitor(
+                surgeonOperatingRoomAssignmentsOuterVisitor);
+
             this.y = parametersAbstractFactory.CreateyFactory().Create(
-                this.Context.SurgeonOperatingRoomAssignments
-                .Select(x => parameterElementsAbstractFactory.CreateyParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Item1),
-                    this.r.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                surgeonOperatingRoomAssignmentsOuterVisitor.RedBlackTree);
 
             // v(m, r)
             this.v = variablesAbstractFactory.CreatevFactory().Create(

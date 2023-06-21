@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Parameters.SurgeonOperatingRoomAssignments
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Parameters.SurgeonOperatingRoomAssignments;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.Interfaces.Parameters.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.InterfacesFactories.Parameters.SurgeonOperatingRoomAssignments;
@@ -19,7 +21,7 @@
         }
 
         public Iy Create(
-            ImmutableList<IyParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyParameterElement>> value)
         {
             Iy parameter = null;
 

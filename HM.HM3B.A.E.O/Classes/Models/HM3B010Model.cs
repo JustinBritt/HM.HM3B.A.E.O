@@ -63,13 +63,16 @@
                 machineOperatingRoomAssignmentsOuterVisitor.RedBlackTree);
 
             // y(s, r)
+            ISurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>> surgeonOperatingRoomAssignmentsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>>(
+                parameterElementsAbstractFactory.CreateyParameterElementFactory(),
+                this.r,
+                this.s);
+
+            this.Context.SurgeonOperatingRoomAssignments.AcceptVisitor(
+                surgeonOperatingRoomAssignmentsOuterVisitor);
+
             this.y = parametersAbstractFactory.CreateyFactory().Create(
-                this.Context.SurgeonOperatingRoomAssignments
-                .Select(x => parameterElementsAbstractFactory.CreateyParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Item1),
-                    this.r.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                surgeonOperatingRoomAssignmentsOuterVisitor.RedBlackTree);
 
             // w(j, r)
             this.w = variablesAbstractFactory.CreatewFactory().Create(

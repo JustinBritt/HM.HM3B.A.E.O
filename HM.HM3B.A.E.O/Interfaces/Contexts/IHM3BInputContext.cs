@@ -1,6 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Contexts
 {
-    using System;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -45,7 +44,7 @@
 
         RedBlackTree<Organization, RedBlackTree<Location, INullableValue<bool>>> SurgicalSpecialtyOperatingRoomAssignments { get; }
 
-        ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> SurgeonOperatingRoomAssignments { get; }
+        RedBlackTree<Organization, RedBlackTree<Location, INullableValue<bool>>> SurgeonOperatingRoomAssignments { get; }
 
         RedBlackTree<Organization, RedBlackTree<Device, INullableValue<bool>>> SurgeonMachineRequirements { get; }
 
