@@ -1,7 +1,6 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Contexts
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -40,7 +39,7 @@
 
         RedBlackTree<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> SurgeonDayScenarioLengthOfStayProbabilities { get; }
 
-        ImmutableList<Tuple<Device, Location, INullableValue<bool>>> MachineOperatingRoomAssignments { get; }
+        RedBlackTree<Device, RedBlackTree<Location, INullableValue<bool>>> MachineOperatingRoomAssignments { get; }
 
         INullableValue<int> NumberDaysPerWeek { get; }
 

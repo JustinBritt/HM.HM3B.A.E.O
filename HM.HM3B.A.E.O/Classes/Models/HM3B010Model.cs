@@ -7,9 +7,13 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+    using NGenerics.Patterns.Visitor;
+
     using HM.HM3B.A.E.O.InterfacesAbstractFactories;
     using HM.HM3B.A.E.O.Interfaces.Contexts;
     using HM.HM3B.A.E.O.Interfaces.Models;
+    using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
     internal sealed class HM3B010Model : 
         HM3BModel,
@@ -47,13 +51,16 @@
                 HM3BInputContext)
         {
             // v(m, r)
+            IMachineOperatingRoomAssignmentsOuterVisitor<Device, RedBlackTree<Location, INullableValue<bool>>> machineOperatingRoomAssignmentsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.MachineOperatingRoomAssignmentsOuterVisitor<Device, RedBlackTree<Location, INullableValue<bool>>>(
+                parameterElementsAbstractFactory.CreatevParameterElementFactory(),
+                this.m,
+                this.r);
+
+            this.Context.MachineOperatingRoomAssignments.AcceptVisitor(
+                machineOperatingRoomAssignmentsOuterVisitor);
+
             this.v = parametersAbstractFactory.CreatevFactory().Create(
-                this.Context.MachineOperatingRoomAssignments
-                .Select(x => parameterElementsAbstractFactory.CreatevParameterElementFactory().Create(
-                    this.m.GetElementAt(x.Item1),
-                    this.r.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                machineOperatingRoomAssignmentsOuterVisitor.RedBlackTree);
 
             // y(s, r)
             this.y = parametersAbstractFactory.CreateyFactory().Create(

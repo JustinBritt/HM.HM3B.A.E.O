@@ -27,7 +27,7 @@
             RedBlackTree<Organization, INullableValue<int>> surgeonLengthOfStayMaximums,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> surgeonScenarioMaximumNumberPatients,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> surgeonDayScenarioLengthOfStayProbabilities,
-            ImmutableList<Tuple<Device, Location, INullableValue<bool>>> machineOperatingRoomAssignments,
+            RedBlackTree<Device, RedBlackTree<Location, INullableValue<bool>>> machineOperatingRoomAssignments,
             INullableValue<int> numberDaysPerWeek,
             ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> surgicalSpecialtyOperatingRoomAssignments,
             ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> surgeonOperatingRoomAssignments,

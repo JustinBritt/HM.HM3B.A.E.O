@@ -1,7 +1,6 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Contexts
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using log4net;
@@ -32,7 +31,7 @@
             RedBlackTree<Organization, INullableValue<int>> surgeonLengthOfStayMaximums,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> surgeonScenarioMaximumNumberPatients,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> surgeonDayScenarioLengthOfStayProbabilities,
-            ImmutableList<Tuple<Device, Location, INullableValue<bool>>> machineOperatingRoomAssignments,
+            RedBlackTree<Device, RedBlackTree<Location, INullableValue<bool>>> machineOperatingRoomAssignments,
             INullableValue<int> numberDaysPerWeek,
             ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> surgicalSpecialtyOperatingRoomAssignments,
             ImmutableList<Tuple<Organization, Location, INullableValue<bool>>> surgeonOperatingRoomAssignments,
@@ -145,7 +144,7 @@
 
         public RedBlackTree<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> SurgeonDayScenarioLengthOfStayProbabilities { get; }
 
-        public ImmutableList<Tuple<Device, Location, INullableValue<bool>>> MachineOperatingRoomAssignments { get; }
+        public RedBlackTree<Device, RedBlackTree<Location, INullableValue<bool>>> MachineOperatingRoomAssignments { get; }
 
         public INullableValue<int> NumberDaysPerWeek { get; }
 
