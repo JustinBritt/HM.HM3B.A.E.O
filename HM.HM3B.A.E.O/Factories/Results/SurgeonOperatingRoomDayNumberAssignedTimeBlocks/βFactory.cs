@@ -1,11 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM3B.A.E.O.Classes.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
@@ -19,7 +21,7 @@
         }
 
         public Iβ Create(
-            ImmutableList<IβResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> value)
         {
             Iβ result = null;
 

@@ -182,7 +182,9 @@
             this.SurgeonOperatingRoomDayNumberAssignedTimeBlocks = HM3BModel.β.GetElementsAt(
                 resultElementsAbstractFactory.CreateβResultElementFactory(),
                 resultsAbstractFactory.CreateβFactory(),
-                HM3BModel.srd)
+                HM3BModel.d,
+                HM3BModel.r,
+                HM3BModel.s)
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory());
 
@@ -456,7 +458,7 @@
 
         public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<bool>>> SurgeonDayAssignments { get; }
 
-        public ImmutableList<Tuple<Organization, Location, INullableValue<int>, INullableValue<int>>> SurgeonOperatingRoomDayNumberAssignedTimeBlocks { get; }
+        public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<int>>>> SurgeonOperatingRoomDayNumberAssignedTimeBlocks { get; }
 
         public RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> OperatingRoomDayAssignedAvailabilities { get; }
 

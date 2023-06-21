@@ -1,15 +1,16 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Variables
 {
     using System;
-    using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using OPTANO.Modeling.Optimization;
 
-    using HM.HM3B.A.E.O.Interfaces.CrossJoins;
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
+    using HM.HM3B.A.E.O.Interfaces.Indices;
+    using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
 
@@ -48,20 +49,46 @@
         public Interfaces.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks.Iβ GetElementsAt(
             IβResultElementFactory βResultElementFactory,
             IβFactory βFactory,
-            Isrd srd)
+            Id d,
+            Ir r,
+            Is s)
         {
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> outerRedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>>();
+
+            foreach (IsIndexElement sIndexElement in s.Value.Values)
+            {
+                RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>> firstInnerRedBlackTree = new RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>();
+
+                foreach (IrIndexElement rIndexElement in r.Value.Values)
+                {
+                    RedBlackTree<IdIndexElement, IβResultElement> secondInnerRedBlackTree = new RedBlackTree<IdIndexElement, IβResultElement>();
+
+                    foreach (IdIndexElement dIndexElement in d.Value.Values)
+                    {
+                        secondInnerRedBlackTree.Add(
+                            dIndexElement,
+                            βResultElementFactory.Create(
+                                sIndexElement,
+                                rIndexElement,
+                                dIndexElement,
+                                this.GetElementAt(
+                                    sIndexElement,
+                                    rIndexElement,
+                                    dIndexElement)));
+                    }
+
+                    firstInnerRedBlackTree.Add(
+                        rIndexElement,
+                        secondInnerRedBlackTree);
+                }
+
+                outerRedBlackTree.Add(
+                    sIndexElement,
+                    firstInnerRedBlackTree);
+            }
+
             return βFactory.Create(
-                srd.Value
-                .Select(
-                    i => βResultElementFactory.Create(
-                        i.sIndexElement,
-                        i.rIndexElement,
-                        i.dIndexElement,
-                        this.GetElementAt(
-                            i.sIndexElement,
-                            i.rIndexElement,
-                            i.dIndexElement)))
-                .ToImmutableList());
+                outerRedBlackTree);
         }
     }
 }           
