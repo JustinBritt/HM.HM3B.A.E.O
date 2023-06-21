@@ -190,7 +190,8 @@
             this.OperatingRoomDayAssignedAvailabilities = HM3BModel.γ.GetElementsAt(
                 resultElementsAbstractFactory.CreateγResultElementFactory(),
                 resultsAbstractFactory.CreateγFactory(),
-                HM3BModel.rt)
+                HM3BModel.r,
+                HM3BModel.t)
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory());
 

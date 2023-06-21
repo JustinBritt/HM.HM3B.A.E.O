@@ -4,6 +4,7 @@
 
     using HM.HM3B.A.E.O.Interfaces.CrossJoins;
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
+    using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.OperatingRoomDayAssignedAvailabilities;
 
@@ -18,6 +19,7 @@
         Interfaces.Results.OperatingRoomDayAssignedAvailabilities.Iγ GetElementsAt(
             IγResultElementFactory γResultElementFactory,
             IγFactory γFactory,
-            Irt rt);
+            Ir r,
+            It t);
     }
 }

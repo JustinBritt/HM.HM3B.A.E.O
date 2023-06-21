@@ -1,14 +1,14 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Variables
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using OPTANO.Modeling.Optimization;
 
-    using HM.HM3B.A.E.O.Interfaces.CrossJoins;
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
+    using HM.HM3B.A.E.O.Interfaces.Indices;
+    using HM.HM3B.A.E.O.Interfaces.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.Interfaces.Variables;
     using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.OperatingRoomDayAssignedAvailabilities;
@@ -42,18 +42,34 @@
         public Interfaces.Results.OperatingRoomDayAssignedAvailabilities.Iγ GetElementsAt(
             IγResultElementFactory γResultElementFactory,
             IγFactory γFactory,
-            Irt rt)
+            Ir r,
+            It t)
         {
+            RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> outerRedBlackTree = new RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>>();
+
+            foreach (IrIndexElement rIndexElement in r.Value.Values)
+            {
+                RedBlackTree<ItIndexElement, IγResultElement> innerRedBlackTree = new RedBlackTree<ItIndexElement, IγResultElement>();
+
+                foreach (ItIndexElement tIndexElement in t.Value.Values)
+                {
+                    innerRedBlackTree.Add(
+                        tIndexElement,
+                        γResultElementFactory.Create(
+                            rIndexElement,
+                            tIndexElement,
+                            this.GetElementAt(
+                                rIndexElement,
+                                tIndexElement)));
+                }
+
+                outerRedBlackTree.Add(
+                    rIndexElement,
+                    innerRedBlackTree);
+            }
+
             return γFactory.Create(
-                rt.Value
-                .Select(
-                    i => γResultElementFactory.Create(
-                        i.rIndexElement,
-                        i.tIndexElement,
-                        this.GetElementAt(
-                            i.rIndexElement,
-                            i.tIndexElement)))
-                .ToImmutableList());
+                outerRedBlackTree);
         }
     }
 }

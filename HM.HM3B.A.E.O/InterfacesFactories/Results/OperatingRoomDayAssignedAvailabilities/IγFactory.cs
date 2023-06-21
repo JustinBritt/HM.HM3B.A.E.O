@@ -1,13 +1,14 @@
 ﻿namespace HM.HM3B.A.E.O.InterfacesFactories.Results.OperatingRoomDayAssignedAvailabilities
 {
-    using System.Collections.Immutable;
+    using NGenerics.DataStructures.Trees;
 
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.Interfaces.Results.OperatingRoomDayAssignedAvailabilities;
 
     public interface IγFactory
     {
         Iγ Create(
-            ImmutableList<IγResultElement> value);
+            RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> value);
     }
 }
