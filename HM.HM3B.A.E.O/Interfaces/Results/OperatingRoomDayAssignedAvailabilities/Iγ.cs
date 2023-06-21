@@ -1,8 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Results.OperatingRoomDayAssignedAvailabilities
 {
-    using System;
-    using System.Collections.Immutable;
-
     using Hl7.Fhir.Model;
 
     using NGenerics.DataStructures.Trees;
@@ -15,7 +12,7 @@
     {
         RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> Value { get; }
 
-        ImmutableList<Tuple<Location, FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
+        RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory);
     }
 }
