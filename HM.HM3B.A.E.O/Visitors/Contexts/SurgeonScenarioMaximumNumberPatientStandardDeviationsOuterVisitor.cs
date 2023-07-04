@@ -53,7 +53,7 @@
 
             RedBlackTree<INullableValue<int>, INullableValue<decimal>> value = obj.Value;
 
-            var innerVisitor = new SurgeonScenarioMaximumNumberPatientStandardDeviationsInnerVisitor<INullableValue<int>, INullableValue<decimal>>(
+            ISurgeonScenarioMaximumNumberPatientStandardDeviationsInnerVisitor<INullableValue<int>, INullableValue<decimal>> innerVisitor = new SurgeonScenarioMaximumNumberPatientStandardDeviationsInnerVisitor<INullableValue<int>, INullableValue<decimal>>(
                 this.σParameterElementFactory,
                 sIndexElement,
                 this.Λ);
