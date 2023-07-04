@@ -53,7 +53,7 @@
 
             RedBlackTree<Location, INullableValue<bool>> value = obj.Value;
 
-            var innerVisitor = new SurgeonOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>>(
+            ISurgeonOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>> innerVisitor = new SurgeonOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>>(
                 this.yParameterElementFactory,
                 sIndexElement,
                 this.r);
