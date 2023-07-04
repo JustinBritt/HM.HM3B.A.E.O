@@ -53,7 +53,7 @@
 
             RedBlackTree<Device, INullableValue<bool>> value = obj.Value;
 
-            var innerVisitor = new SurgeonMachineRequirementsInnerVisitor<Device, INullableValue<bool>>(
+            ISurgeonMachineRequirementsInnerVisitor<Device, INullableValue<bool>> innerVisitor = new SurgeonMachineRequirementsInnerVisitor<Device, INullableValue<bool>>(
                 this.ζParameterElementFactory,
                 sIndexElement,
                 this.m);
