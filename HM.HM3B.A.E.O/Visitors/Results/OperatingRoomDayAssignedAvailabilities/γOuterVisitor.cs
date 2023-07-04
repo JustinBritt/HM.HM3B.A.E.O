@@ -49,7 +49,7 @@
 
             RedBlackTree<ItIndexElement, IγResultElement> value = obj.Value;
 
-            var innerVisitor = new γInnerVisitor<ItIndexElement, IγResultElement>(
+            IγInnerVisitor<ItIndexElement, IγResultElement> innerVisitor = new γInnerVisitor<ItIndexElement, IγResultElement>(
                 this.NullableValueFactory,
                 this.FhirDateTimeComparer);
 

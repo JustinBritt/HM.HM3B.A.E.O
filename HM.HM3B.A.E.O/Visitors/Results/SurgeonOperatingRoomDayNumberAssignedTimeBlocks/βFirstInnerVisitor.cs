@@ -49,7 +49,7 @@
 
             RedBlackTree<IdIndexElement, IβResultElement> value = obj.Value;
 
-            var innerVisitor = new βSecondInnerVisitor<IdIndexElement, IβResultElement>(
+            IβSecondInnerVisitor<IdIndexElement, IβResultElement> innerVisitor = new βSecondInnerVisitor<IdIndexElement, IβResultElement>(
                 this.NullableValueFactory,
                 this.NullableValueintComparer);
 
