@@ -53,7 +53,7 @@
 
             RedBlackTree<INullableValue<int>, Duration> value = obj.Value;
 
-            var innerVisitor = new SurgeonScenarioWeightedAverageSurgicalDurationsInnerVisitor<INullableValue<int>, Duration>(
+            ISurgeonScenarioWeightedAverageSurgicalDurationsInnerVisitor<INullableValue<int>, Duration> innerVisitor = new SurgeonScenarioWeightedAverageSurgicalDurationsInnerVisitor<INullableValue<int>, Duration>(
                 this.hParameterElementFactory,
                 sIndexElement,
                 this.Λ);
