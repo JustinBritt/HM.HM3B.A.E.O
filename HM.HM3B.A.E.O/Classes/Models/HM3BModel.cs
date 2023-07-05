@@ -351,6 +351,7 @@
 
             // ψ(t)
             IDayAvailabilitiesVisitor<FhirDateTime, INullableValue<bool>> dayAvailabilitiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.DayAvailabilitiesVisitor<FhirDateTime, INullableValue<bool>>(
+                new HM.HM3B.A.E.O.Factories.Dependencies.NGenerics.DataStructures.Trees.RedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateψParameterElementFactory(),
                 this.t);
 
