@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioWeightedAverageSurgicalDurations;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonScenarioWeightedAverageSurgicalDurations;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,18 +23,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IhParameterElementFactory hParameterElementFactory,
             Is s,
             IΛ Λ)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.hParameterElementFactory = hParameterElementFactory;
 
             this.s = s;
 
             this.Λ = Λ;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IhParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IΛIndexElement, IhParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IhParameterElementFactory hParameterElementFactory { get; }
 
@@ -54,6 +60,7 @@
             RedBlackTree<INullableValue<int>, Duration> value = obj.Value;
 
             ISurgeonScenarioWeightedAverageSurgicalDurationsInnerVisitor<INullableValue<int>, Duration> innerVisitor = new SurgeonScenarioWeightedAverageSurgicalDurationsInnerVisitor<INullableValue<int>, Duration>(
+                this.RedBlackTreeFactory,
                 this.hParameterElementFactory,
                 sIndexElement,
                 this.Λ);

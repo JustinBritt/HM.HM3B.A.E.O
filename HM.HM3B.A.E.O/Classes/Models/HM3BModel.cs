@@ -243,6 +243,7 @@
 
             // h(s, Λ)
             ISurgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, Duration>> surgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, Duration>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreatehParameterElementFactory(),
                 this.s,
                 this.Λ);
@@ -267,6 +268,7 @@
 
             // n(s, Λ)
             ISurgeonScenarioMaximumNumberPatientsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> surgeonScenarioMaximumNumberPatientsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonScenarioMaximumNumberPatientsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreatenParameterElementFactory(),
                 this.s,
                 this.Λ);
@@ -349,6 +351,7 @@
 
             // σ(s, Λ)
             ISurgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateσParameterElementFactory(),
                 this.s,
                 this.Λ);

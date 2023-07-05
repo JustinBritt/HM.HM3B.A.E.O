@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgicalSpecialtyOperatingRoomAssignments;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgicalSpecialtyOperatingRoomAssignments;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -21,6 +22,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgicalSpecialtyOperatingRoomAssignmentsInnerVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IwParameterElementFactory wParameterElementFactory,
             IjIndexElement jIndexElement,
             Ir r)
@@ -31,7 +33,7 @@
 
             this.r = r;
 
-            this.RedBlackTree = new RedBlackTree<IrIndexElement, IwParameterElement>();
+            this.RedBlackTree = redBlackTreeFactory.Create<IrIndexElement, IwParameterElement>();
         }
 
         private IwParameterElementFactory wParameterElementFactory { get; }

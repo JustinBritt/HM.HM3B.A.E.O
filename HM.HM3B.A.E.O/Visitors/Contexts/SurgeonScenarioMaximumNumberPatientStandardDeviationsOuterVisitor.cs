@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioMaximumNumberPatients;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonScenarioMaximumNumberPatients;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
     
@@ -22,18 +23,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonScenarioMaximumNumberPatientStandardDeviationsOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IσParameterElementFactory σParameterElementFactory,
             Is s,
             IΛ Λ)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.σParameterElementFactory = σParameterElementFactory;
 
             this.s = s;
 
             this.Λ = Λ;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, IσParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IΛIndexElement, IσParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IσParameterElementFactory σParameterElementFactory { get; }
 
@@ -54,6 +60,7 @@
             RedBlackTree<INullableValue<int>, INullableValue<decimal>> value = obj.Value;
 
             ISurgeonScenarioMaximumNumberPatientStandardDeviationsInnerVisitor<INullableValue<int>, INullableValue<decimal>> innerVisitor = new SurgeonScenarioMaximumNumberPatientStandardDeviationsInnerVisitor<INullableValue<int>, INullableValue<decimal>>(
+                this.RedBlackTreeFactory,
                 this.σParameterElementFactory,
                 sIndexElement,
                 this.Λ);

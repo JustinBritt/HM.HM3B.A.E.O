@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonScenarioMaximumNumberPatients;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonScenarioMaximumNumberPatients;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -21,6 +22,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonScenarioMaximumNumberPatientsInnerVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             InParameterElementFactory nParameterElementFactory,
             IsIndexElement sIndexElement,
             IΛ Λ)
@@ -31,7 +33,7 @@
 
             this.Λ = Λ;
 
-            this.RedBlackTree = new RedBlackTree<IΛIndexElement, InParameterElement>();
+            this.RedBlackTree = redBlackTreeFactory.Create<IΛIndexElement, InParameterElement>();
         }
 
         private InParameterElementFactory nParameterElementFactory { get; }
