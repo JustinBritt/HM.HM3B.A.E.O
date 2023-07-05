@@ -201,6 +201,8 @@
                 HM3BModel.r,
                 HM3BModel.t)
                 .GetValueForOutputContext(
+                new HM.HM3B.A.E.O.Factories.Comparers.FhirDateTimeComparerFactory(),
+                new HM.HM3B.A.E.O.Factories.Comparers.LocationComparerFactory(),
                 dependenciesAbstractFactory.CreateNullableValueFactory(),
                 dependenciesAbstractFactory.CreateRedBlackTreeFactory());
 
