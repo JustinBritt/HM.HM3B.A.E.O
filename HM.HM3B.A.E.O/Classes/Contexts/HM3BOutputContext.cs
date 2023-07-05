@@ -33,6 +33,7 @@
 
         public HM3BOutputContext(
             ICalculationsAbstractFactory calculationsAbstractFactory,
+            IComparersAbstractFactory comparersAbstractFactory,
             IDependenciesAbstractFactory dependenciesAbstractFactory,
             IResultElementsAbstractFactory resultElementsAbstractFactory,
             IResultsAbstractFactory resultsAbstractFactory,

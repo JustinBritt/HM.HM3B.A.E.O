@@ -23,6 +23,7 @@
 
         public IHM3BOutputContext Create(
             ICalculationsAbstractFactory calculationsAbstractFactory,
+            IComparersAbstractFactory comparersAbstractFactory,
             IDependenciesAbstractFactory dependenciesAbstractFactory,
             IResultElementsAbstractFactory resultElementsAbstractFactory,
             IResultsAbstractFactory resultsAbstractFactory,
@@ -36,6 +37,7 @@
             {
                 context = new HM3BOutputContext(
                     calculationsAbstractFactory,
+                    comparersAbstractFactory,
                     dependenciesAbstractFactory,
                     resultElementsAbstractFactory,
                     resultsAbstractFactory,
