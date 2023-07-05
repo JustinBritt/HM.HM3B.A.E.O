@@ -170,6 +170,8 @@
             {
                 this.SurgeonOperatingRoomAssignments = y
                     .GetValueForOutputContext(
+                    comparersAbstractFactory.CreateLocationComparerFactory(),
+                    comparersAbstractFactory.CreateOrganizationComparerFactory(),
                     dependenciesAbstractFactory.CreateNullableValueFactory());
             }
 

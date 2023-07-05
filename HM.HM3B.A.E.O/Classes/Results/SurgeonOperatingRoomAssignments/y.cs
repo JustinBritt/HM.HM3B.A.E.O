@@ -10,6 +10,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonOperatingRoomAssignments;
+    using HM.HM3B.A.E.O.InterfacesFactories.Comparers;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
     using HM.HM3B.A.E.O.InterfacesVisitors.Results.SurgeonOperatingRoomAssignments;
     
@@ -26,12 +27,14 @@
         public RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>> Value { get; }
 
         public RedBlackTree<Organization, RedBlackTree<Location, INullableValue<bool>>> GetValueForOutputContext(
+            ILocationComparerFactory locationComparerFactory,
+            IOrganizationComparerFactory organizationComparerFactory,
             INullableValueFactory nullableValueFactory)
         {
             IyOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>> yOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.SurgeonOperatingRoomAssignments.yOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>>(
                 nullableValueFactory,
-                new HM.HM3B.A.E.O.Classes.Comparers.LocationComparer(),
-                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+                locationComparerFactory.Create(),
+                organizationComparerFactory.Create());
 
             this.Value.AcceptVisitor(
                 yOuterVisitor);
