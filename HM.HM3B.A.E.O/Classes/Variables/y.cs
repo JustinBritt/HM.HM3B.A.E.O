@@ -10,6 +10,7 @@
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.Interfaces.Variables;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomAssignments;
 
@@ -40,16 +41,17 @@
         }
 
         public Interfaces.Results.SurgeonOperatingRoomAssignments.Iy GetElementsAt(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IyResultElementFactory yResultElementFactory,
             IyFactory yFactory,
             Ir r,
             Is s)
         {
-            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>> outerRedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>>();
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>> outerRedBlackTree = redBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IrIndexElement, IyResultElement>>();
 
             foreach (IsIndexElement sIndexElement in s.Value.Values)
             {
-                RedBlackTree<IrIndexElement, IyResultElement> innerRedBlackTree = new RedBlackTree<IrIndexElement, IyResultElement>();
+                RedBlackTree<IrIndexElement, IyResultElement> innerRedBlackTree = redBlackTreeFactory.Create<IrIndexElement, IyResultElement>();
 
                 foreach (IrIndexElement rIndexElement in r.Value.Values)
                 {

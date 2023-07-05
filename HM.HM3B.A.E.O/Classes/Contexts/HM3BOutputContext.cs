@@ -135,24 +135,28 @@
             Iy y = HM3BEncodingEnum switch
             {
                 HM3BEncodingEnum.E001 => ((IHM3B001Model)HM3BModel).y.GetElementsAt(
+                    dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                     resultElementsAbstractFactory.CreateyResultElementFactory(),
                     resultsAbstractFactory.CreateyFactory(),
                     ((IHM3B001Model)HM3BModel).r,
                     ((IHM3B001Model)HM3BModel).s),
 
                 HM3BEncodingEnum.E011 => ((IHM3B011Model)HM3BModel).y.GetElementsAt(
+                    dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                     resultElementsAbstractFactory.CreateyResultElementFactory(),
                     resultsAbstractFactory.CreateyFactory(),
                     ((IHM3B011Model)HM3BModel).r,
                     ((IHM3B011Model)HM3BModel).s),
                 
                 HM3BEncodingEnum.E101 => ((IHM3B101Model)HM3BModel).y.GetElementsAt(
+                    dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                     resultElementsAbstractFactory.CreateyResultElementFactory(),
                     resultsAbstractFactory.CreateyFactory(),
                     ((IHM3B101Model)HM3BModel).r,
                     ((IHM3B101Model)HM3BModel).s),
 
                 HM3BEncodingEnum.E111 => ((IHM3B111Model)HM3BModel).y.GetElementsAt(
+                    dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                     resultElementsAbstractFactory.CreateyResultElementFactory(),
                     resultsAbstractFactory.CreateyFactory(),
                     ((IHM3B111Model)HM3BModel).r,
