@@ -57,6 +57,7 @@
                         comparersAbstractFactory,
                         constraintElementsAbstractFactory,
                         constraintsAbstractFactory,
+                        contextsAbstractFactory,
                         crossJoinElementsAbstractFactory,
                         crossJoinsAbstractFactory,
                         dependenciesAbstractFactory,
