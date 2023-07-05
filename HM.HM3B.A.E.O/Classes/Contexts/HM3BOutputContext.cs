@@ -194,6 +194,7 @@
 
             // γ(r, t)
             this.OperatingRoomDayAssignedAvailabilities = HM3BModel.γ.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreateγResultElementFactory(),
                 resultsAbstractFactory.CreateγFactory(),
                 HM3BModel.r,
