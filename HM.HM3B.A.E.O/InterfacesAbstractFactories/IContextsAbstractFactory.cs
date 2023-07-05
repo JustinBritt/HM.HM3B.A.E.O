@@ -9,5 +9,7 @@
         IHM3BInputContextFactory CreateHM3BInputContextFactory();
 
         IHM3BOutputContextFactory CreateHM3BOutputContextFactory();
+
+        IPlanningHorizonVisitorFactory CreatePlanningHorizonVisitorFactory();
     }
 }

@@ -69,5 +69,23 @@
 
             return factory;
         }
+
+        public IPlanningHorizonVisitorFactory CreatePlanningHorizonVisitorFactory()
+        {
+            IPlanningHorizonVisitorFactory factory = null;
+
+            try
+            {
+                factory = new PlanningHorizonVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
     }
 }
