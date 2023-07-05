@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
 
@@ -47,21 +48,22 @@
         }
 
         public Interfaces.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks.Iβ GetElementsAt(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IβResultElementFactory βResultElementFactory,
             IβFactory βFactory,
             Id d,
             Ir r,
             Is s)
         {
-            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> outerRedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>>();
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> outerRedBlackTree = redBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>>();
 
             foreach (IsIndexElement sIndexElement in s.Value.Values)
             {
-                RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>> firstInnerRedBlackTree = new RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>();
+                RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>> firstInnerRedBlackTree = redBlackTreeFactory.Create<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>();
 
                 foreach (IrIndexElement rIndexElement in r.Value.Values)
                 {
-                    RedBlackTree<IdIndexElement, IβResultElement> secondInnerRedBlackTree = new RedBlackTree<IdIndexElement, IβResultElement>();
+                    RedBlackTree<IdIndexElement, IβResultElement> secondInnerRedBlackTree = redBlackTreeFactory.Create<IdIndexElement, IβResultElement>();
 
                     foreach (IdIndexElement dIndexElement in d.Value.Values)
                     {

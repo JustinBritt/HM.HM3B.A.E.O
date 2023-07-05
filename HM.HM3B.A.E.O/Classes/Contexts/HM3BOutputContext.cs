@@ -184,6 +184,7 @@
 
             // β(s, r, d)
             this.SurgeonOperatingRoomDayNumberAssignedTimeBlocks = HM3BModel.β.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreateβResultElementFactory(),
                 resultsAbstractFactory.CreateβFactory(),
                 HM3BModel.d,
