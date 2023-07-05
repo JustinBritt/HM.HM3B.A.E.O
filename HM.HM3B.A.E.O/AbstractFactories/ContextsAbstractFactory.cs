@@ -16,6 +16,24 @@
         {
         }
 
+        public IDayAvailabilitiesVisitorFactory CreateDayAvailabilitiesVisitorFactory()
+        {
+            IDayAvailabilitiesVisitorFactory factory = null;
+
+            try
+            {
+                factory = new DayAvailabilitiesVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
         public IHM3BInputContextFactory CreateHM3BInputContextFactory()
         {
             IHM3BInputContextFactory factory = null;
