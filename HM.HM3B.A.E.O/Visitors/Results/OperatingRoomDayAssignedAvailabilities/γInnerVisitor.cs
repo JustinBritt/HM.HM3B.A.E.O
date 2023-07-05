@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesVisitors.Results.OperatingRoomDayAssignedAvailabilities;
 
     internal sealed class γInnerVisitor<TKey, TValue> : IγInnerVisitor<TKey, TValue>
@@ -22,11 +23,12 @@
 
         public γInnerVisitor(
             INullableValueFactory nullableValueFactory,
+            IRedBlackTreeFactory redBlackTreeFactory,
             IFhirDateTimeComparer FhirDateTimeComparer)
         {
             this.NullableValueFactory = nullableValueFactory;
 
-            this.RedBlackTree = new RedBlackTree<FhirDateTime, INullableValue<bool>>(
+            this.RedBlackTree = redBlackTreeFactory.Create<FhirDateTime, INullableValue<bool>>(
                 FhirDateTimeComparer);
         }
 

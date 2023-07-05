@@ -7,12 +7,14 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
 
     public interface Iγ
     {
         RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> Value { get; }
 
         RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
-            INullableValueFactory nullableValueFactory);
+            INullableValueFactory nullableValueFactory,
+            IRedBlackTreeFactory redBlackTreeFactory);
     }
 }

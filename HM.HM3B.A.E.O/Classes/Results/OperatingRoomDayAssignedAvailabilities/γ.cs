@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.ResultElements.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.Interfaces.Results.OperatingRoomDayAssignedAvailabilities;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesVisitors.Results.OperatingRoomDayAssignedAvailabilities;
 
     internal sealed class γ : Iγ
@@ -26,10 +27,12 @@
         public RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> Value { get; }
 
         public RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
-            INullableValueFactory nullableValueFactory)
+            INullableValueFactory nullableValueFactory,
+            IRedBlackTreeFactory redBlackTreeFactory)
         {
             IγOuterVisitor<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>> γOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.OperatingRoomDayAssignedAvailabilities.γOuterVisitor<IrIndexElement, RedBlackTree<ItIndexElement, IγResultElement>>(
                 nullableValueFactory,
+                redBlackTreeFactory,
                 new HM.HM3B.A.E.O.Classes.Comparers.FhirDateTimeComparer(),
                 new HM.HM3B.A.E.O.Classes.Comparers.LocationComparer());
 
