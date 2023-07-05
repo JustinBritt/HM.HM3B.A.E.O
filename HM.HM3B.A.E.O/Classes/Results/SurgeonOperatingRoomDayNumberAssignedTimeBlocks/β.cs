@@ -10,6 +10,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.InterfacesFactories.Comparers;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
     using HM.HM3B.A.E.O.InterfacesVisitors.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
 
@@ -26,13 +27,16 @@
         public RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> Value { get; }
 
         public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<int>>>> GetValueForOutputContext(
+            ILocationComparerFactory locationComparerFactory,
+            INullableValueintComparerFactory nullableValueintComparerFactory,
+            IOrganizationComparerFactory organizationComparerFactory,
             INullableValueFactory nullableValueFactory)
         {
             IβOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> βOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.SurgeonOperatingRoomDayNumberAssignedTimeBlocks.βOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>>(
                 nullableValueFactory,
-                new HM.HM3B.A.E.O.Classes.Comparers.LocationComparer(),
-                new HM.HM3B.A.E.O.Classes.Comparers.NullableValueintComparer(),
-                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+                locationComparerFactory.Create(),
+                nullableValueintComparerFactory.Create(),
+                organizationComparerFactory.Create());
 
             this.Value.AcceptVisitor(
                 βOuterVisitor);

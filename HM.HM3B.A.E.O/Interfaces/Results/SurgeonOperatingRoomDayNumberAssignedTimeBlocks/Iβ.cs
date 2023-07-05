@@ -6,6 +6,7 @@
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.InterfacesFactories.Comparers;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
 
     public interface Iβ
@@ -13,6 +14,9 @@
         RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<IdIndexElement, IβResultElement>>> Value { get; }
 
         RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<int>>>> GetValueForOutputContext(
+            ILocationComparerFactory locationComparerFactory,
+            INullableValueintComparerFactory nullableValueintComparerFactory,
+            IOrganizationComparerFactory organizationComparerFactory,
             INullableValueFactory nullableValueFactory);
     }
 }

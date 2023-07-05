@@ -194,6 +194,9 @@
                 HM3BModel.r,
                 HM3BModel.s)
                 .GetValueForOutputContext(
+                comparersAbstractFactory.CreateLocationComparerFactory(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory(),
+                comparersAbstractFactory.CreateOrganizationComparerFactory(),
                 dependenciesAbstractFactory.CreateNullableValueFactory());
 
             // γ(r, t)
