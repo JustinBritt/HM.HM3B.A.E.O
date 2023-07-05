@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonMachineRequirements;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonMachineRequirements;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -21,6 +22,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonMachineRequirementsInnerVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IζParameterElementFactory ζParameterElementFactory,
             IsIndexElement sIndexElement,
             Im m)
@@ -30,6 +32,8 @@
             this.sIndexElement = sIndexElement;
 
             this.m = m;
+
+            this.RedBlackTree = redBlackTreeFactory.Create<ImIndexElement, IζParameterElement>();
         }
 
         private IζParameterElementFactory ζParameterElementFactory { get; }

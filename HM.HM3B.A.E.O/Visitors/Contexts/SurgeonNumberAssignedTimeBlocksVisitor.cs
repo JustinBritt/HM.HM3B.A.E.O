@@ -11,6 +11,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonNumberAssignedTimeBlocks;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonNumberAssignedTimeBlocks;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -21,6 +22,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonNumberAssignedTimeBlocksVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IBParameterElementFactory BParameterElementFactory,
             Is s)
         {
@@ -28,7 +30,7 @@
 
             this.s = s;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, IBParameterElement>();
+            this.RedBlackTree = redBlackTreeFactory.Create<IsIndexElement, IBParameterElement>();
         }
 
         private IBParameterElementFactory BParameterElementFactory { get; }

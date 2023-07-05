@@ -109,6 +109,7 @@
 
             // t
             IPlanningHorizonVisitor<INullableValue<int>, FhirDateTime> planningHorizonVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.PlanningHorizonVisitor<INullableValue<int>, FhirDateTime>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 indexElementsAbstractFactory.CreatetIndexElementFactory(),
                 comparersAbstractFactory.CreateFhirDateTimeComparerFactory().Create());
 
@@ -214,6 +215,7 @@
 
             // BBar(j)
             ISurgicalSpecialtyNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>> surgicalSpecialtyNumberAssignedTimeBlocksVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgicalSpecialtyNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateBBarParameterElementFactory(),
                 this.j);
 
@@ -225,6 +227,7 @@
 
             // B(s)
             ISurgeonNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>> surgeonNumberAssignedTimeBlocksVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateBsParameterElementFactory(),
                 this.s);
 
@@ -252,6 +255,7 @@
 
             // L(s)
             ISurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>> surgeonLengthOfStayMaximumsVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateLParameterElementFactory(),
                 this.s);
 
@@ -275,6 +279,7 @@
 
             // p(s, l, Λ)
             ISurgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> surgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreatepParameterElementFactory(),
                 this.l,
                 this.s,
@@ -292,6 +297,7 @@
 
             // Δ(j)
             ISurgicalSpecialtiesVisitor<Organization, ImmutableSortedSet<Organization>> surgicalSpecialtiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgicalSpecialtiesVisitor<Organization, ImmutableSortedSet<Organization>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateΔParameterElementFactory(),
                 this.j,
                 this.s);
@@ -305,6 +311,7 @@
 
             // ζ(s, m)
             ISurgeonMachineRequirementsOuterVisitor<Organization, RedBlackTree<Device, INullableValue<bool>>> surgeonMachineRequirementsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonMachineRequirementsOuterVisitor<Organization, RedBlackTree<Device, INullableValue<bool>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateζParameterElementFactory(),
                 this.m,
                 this.s);
@@ -329,6 +336,7 @@
 
             // Ρ(Λ)
             IScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>> scenarioProbabilitiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.ScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateΡParameterElementFactory(),
                 this.Λ);
 

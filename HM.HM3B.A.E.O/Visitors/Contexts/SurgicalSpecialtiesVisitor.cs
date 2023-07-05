@@ -13,6 +13,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgicalSpecialties;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgicalSpecialties;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -23,6 +24,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgicalSpecialtiesVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IΔParameterElementFactory ΔParameterElementFactory,
             Ij j,
             Is s)
@@ -35,7 +37,7 @@
 
             this.Value = new List<IΔParameterElement>();
 
-            this.RedBlackTree = new RedBlackTree<IjIndexElement, ImmutableList<IsIndexElement>>();
+            this.RedBlackTree = redBlackTreeFactory.Create<IjIndexElement, ImmutableList<IsIndexElement>>();
         }
 
         private IΔParameterElementFactory ΔParameterElementFactory { get; }

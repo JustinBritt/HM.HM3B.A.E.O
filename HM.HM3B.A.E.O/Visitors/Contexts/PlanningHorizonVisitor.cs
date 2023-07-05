@@ -10,6 +10,7 @@
 
     using HM.HM3B.A.E.O.Interfaces.Comparers;
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.IndexElements;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -20,12 +21,13 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public PlanningHorizonVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             ItIndexElementFactory tIndexElementFactory,
             IFhirDateTimeComparer FhirDateTimeComparer)
         {
             this.tIndexElementFactory = tIndexElementFactory;
 
-            this.RedBlackTree = new RedBlackTree<FhirDateTime, ItIndexElement>(
+            this.RedBlackTree = redBlackTreeFactory.Create<FhirDateTime, ItIndexElement>(
                 FhirDateTimeComparer);
         }
 

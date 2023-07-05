@@ -54,6 +54,7 @@
         {
             // v(m, r)
             IMachineOperatingRoomAssignmentsOuterVisitor<Device, RedBlackTree<Location, INullableValue<bool>>> machineOperatingRoomAssignmentsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.MachineOperatingRoomAssignmentsOuterVisitor<Device, RedBlackTree<Location, INullableValue<bool>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreatevParameterElementFactory(),
                 this.m,
                 this.r);
@@ -78,6 +79,7 @@
 
             // y(s, r)
             ISurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>> surgeonOperatingRoomAssignmentsOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonOperatingRoomAssignmentsOuterVisitor<Organization, RedBlackTree<Location, INullableValue<bool>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateyParameterElementFactory(),
                 this.r,
                 this.s);

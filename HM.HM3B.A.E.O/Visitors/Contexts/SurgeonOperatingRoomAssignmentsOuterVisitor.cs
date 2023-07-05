@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonOperatingRoomAssignments;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonOperatingRoomAssignments;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,18 +23,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonOperatingRoomAssignmentsOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IyParameterElementFactory yParameterElementFactory,
             Ir r,
             Is s)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.yParameterElementFactory = yParameterElementFactory;
 
             this.r = r;
 
             this.s = s;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, IyParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IrIndexElement, IyParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IyParameterElementFactory yParameterElementFactory { get; }
 
@@ -54,6 +60,7 @@
             RedBlackTree<Location, INullableValue<bool>> value = obj.Value;
 
             ISurgeonOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>> innerVisitor = new SurgeonOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>>(
+                this.RedBlackTreeFactory,
                 this.yParameterElementFactory,
                 sIndexElement,
                 this.r);

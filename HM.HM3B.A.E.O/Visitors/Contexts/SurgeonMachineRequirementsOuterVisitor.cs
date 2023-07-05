@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonMachineRequirements;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonMachineRequirements;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,18 +23,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonMachineRequirementsOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IζParameterElementFactory ζParameterElementFactory,
             Im m,
             Is s)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.ζParameterElementFactory = ζParameterElementFactory;
 
             this.m = m;
 
             this.s = s;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<ImIndexElement, IζParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IsIndexElement, RedBlackTree<ImIndexElement, IζParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IζParameterElementFactory ζParameterElementFactory { get; }
 
@@ -54,6 +60,7 @@
             RedBlackTree<Device, INullableValue<bool>> value = obj.Value;
 
             ISurgeonMachineRequirementsInnerVisitor<Device, INullableValue<bool>> innerVisitor = new SurgeonMachineRequirementsInnerVisitor<Device, INullableValue<bool>>(
+                this.RedBlackTreeFactory,
                 this.ζParameterElementFactory,
                 sIndexElement,
                 this.m);

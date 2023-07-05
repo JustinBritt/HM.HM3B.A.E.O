@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonDayScenarioLengthOfStayProbabilities;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonDayScenarioLengthOfStayProbabilities;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,11 +23,14 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonDayScenarioLengthOfStayProbabilitiesOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IpParameterElementFactory pParameterElementFactory,
             Il l,
             Is s,
             IΛ Λ)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.pParameterElementFactory = pParameterElementFactory;
 
             this.l = l;
@@ -35,8 +39,10 @@
 
             this.Λ = Λ;
 
-            this.RedBlackTree = new RedBlackTree<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IpParameterElementFactory pParameterElementFactory { get; }
 
@@ -59,6 +65,7 @@
             RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> value = obj.Value;
 
             ISurgeonDayScenarioLengthOfStayProbabilitiesFirstInnerVisitor<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> innerVisitor = new SurgeonDayScenarioLengthOfStayProbabilitiesFirstInnerVisitor<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
+                this.RedBlackTreeFactory,
                 this.pParameterElementFactory,
                 sIndexElement,
                 this.l,

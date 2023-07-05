@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.SurgeonDayScenarioLengthOfStayProbabilities;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.SurgeonDayScenarioLengthOfStayProbabilities;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,11 +23,14 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonDayScenarioLengthOfStayProbabilitiesFirstInnerVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IpParameterElementFactory pParameterElementFactory,
             IsIndexElement sIndexElement,
             Il l,
             IΛ Λ)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.pParameterElementFactory = pParameterElementFactory;
 
             this.sIndexElement = sIndexElement;
@@ -35,8 +39,10 @@
 
             this.Λ = Λ;
 
-            this.RedBlackTree = new RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<IlIndexElement, RedBlackTree<IΛIndexElement, IpParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IpParameterElementFactory pParameterElementFactory { get; }
 
@@ -59,6 +65,7 @@
             RedBlackTree<INullableValue<int>, INullableValue<decimal>> value = obj.Value;
 
             ISurgeonDayScenarioLengthOfStayProbabilitiesSecondInnerVisitor<INullableValue<int>, INullableValue<decimal>> innerVisitor = new SurgeonDayScenarioLengthOfStayProbabilitiesSecondInnerVisitor<INullableValue<int>, INullableValue<decimal>>(
+                this.RedBlackTreeFactory,
                 this.pParameterElementFactory,
                 this.sIndexElement,
                 lIndexElement,

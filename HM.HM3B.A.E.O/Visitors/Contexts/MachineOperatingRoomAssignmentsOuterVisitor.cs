@@ -12,6 +12,7 @@
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ParameterElements.MachineOperatingRoomAssignments;
+    using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.NGenerics.DataStructures.Trees;
     using HM.HM3B.A.E.O.InterfacesFactories.ParameterElements.MachineOperatingRoomAssignments;
     using HM.HM3B.A.E.O.InterfacesVisitors.Contexts;
 
@@ -22,18 +23,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public MachineOperatingRoomAssignmentsOuterVisitor(
+            IRedBlackTreeFactory redBlackTreeFactory,
             IvParameterElementFactory vParameterElementFactory,
             Im m,
             Ir r)
         {
+            this.RedBlackTreeFactory = redBlackTreeFactory;
+
             this.vParameterElementFactory = vParameterElementFactory;
 
             this.m = m;
 
             this.r = r;
 
-            this.RedBlackTree = new RedBlackTree<ImIndexElement, RedBlackTree<IrIndexElement, IvParameterElement>>();
+            this.RedBlackTree = this.RedBlackTreeFactory.Create<ImIndexElement, RedBlackTree<IrIndexElement, IvParameterElement>>();
         }
+
+        private IRedBlackTreeFactory RedBlackTreeFactory { get; }
 
         private IvParameterElementFactory vParameterElementFactory { get; }
 
@@ -54,6 +60,7 @@
             RedBlackTree<Location, INullableValue<bool>> value = obj.Value;
 
             IMachineOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>> innerVisitor = new MachineOperatingRoomAssignmentsInnerVisitor<Location, INullableValue<bool>>(
+                this.RedBlackTreeFactory,
                 this.vParameterElementFactory,
                 mIndexElement,
                 this.r);
