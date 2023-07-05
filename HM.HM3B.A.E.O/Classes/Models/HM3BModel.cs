@@ -324,6 +324,7 @@
 
             // μ(s, Λ)
             ISurgeonScenarioMaximumNumberPatientMeansOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientMeansOuterVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonScenarioMaximumNumberPatientMeansOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateμParameterElementFactory(),
                 this.s,
                 this.Λ);
