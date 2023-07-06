@@ -17,5 +17,7 @@
         ISurgeonLengthOfStayMaximumsVisitorFactory CreateSurgeonLengthOfStayMaximumsVisitorFactory();
 
         ISurgeonNumberAssignedTimeBlocksVisitorFactory CreateSurgeonNumberAssignedTimeBlocksVisitorFactory();
+
+        ISurgicalSpecialtiesVisitorFactory CreateSurgicalSpecialtiesVisitorFactory();
     }
 }

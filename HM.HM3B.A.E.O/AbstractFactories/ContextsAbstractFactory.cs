@@ -141,5 +141,23 @@
 
             return factory;
         }
+
+        public ISurgicalSpecialtiesVisitorFactory CreateSurgicalSpecialtiesVisitorFactory()
+        {
+            ISurgicalSpecialtiesVisitorFactory factory = null;
+
+            try
+            {
+                factory = new SurgicalSpecialtiesVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
     }
 }
