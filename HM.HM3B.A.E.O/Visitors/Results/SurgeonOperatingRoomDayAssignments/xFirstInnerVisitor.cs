@@ -31,7 +31,7 @@
 
             this.FhirDateTimeComparer = FhirDateTimeComparer;
 
-            this.RedBlackTree = new RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<int>>>(
+            this.RedBlackTree = new RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>(
                 locationComparer);
         }
 
@@ -41,7 +41,7 @@
 
         public bool HasCompleted => false;
 
-        public RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<int>>> RedBlackTree { get; }
+        public RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> RedBlackTree { get; }
 
         public void Visit(
             KeyValuePair<TKey, TValue> obj)
