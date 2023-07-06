@@ -26,7 +26,7 @@
         {
             return surgicalSpecialtyNumberAssignedWeekdaysResultElementFactory.Create(
                 ΔParameterElement.jIndexElement,
-                0);// ΔParameterElement.Value.SelectMany(a => x.Value.Where(i => i.sIndexElement == a && i.Value).Select(i => i.tIndexElement.Value.ToDateTimeOffset(TimeSpan.Zero).UtcDateTime.DayOfWeek)).Distinct().Count());
+                ΔParameterElement.Value.SelectMany(a => x.Value[a].Values.SelectMany(w => w.Values).Where(w => w.Value)).Select(w => w.tIndexElement.Value.ToDateTimeOffset(TimeSpan.Zero).UtcDateTime.DayOfWeek).Distinct().Count());
         }
     }
 }
