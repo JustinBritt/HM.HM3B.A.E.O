@@ -71,9 +71,12 @@
 
             // x(s, r, t)
             Ix x = HM3BModel.x.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreatexResultElementFactory(),
                 resultsAbstractFactory.CreatexFactory(),
-                HM3BModel.srt);
+                HM3BModel.r,
+                HM3BModel.s,
+                HM3BModel.t);
 
             this.SurgeonOperatingRoomDayAssignments = x
                 .GetValueForOutputContext(

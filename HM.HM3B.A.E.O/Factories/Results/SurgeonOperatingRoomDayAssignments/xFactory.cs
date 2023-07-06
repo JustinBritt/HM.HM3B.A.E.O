@@ -1,15 +1,17 @@
 ﻿namespace HM.HM3B.A.E.O.Factories.Results.SurgeonOperatingRoomDayAssignments
 {
     using System;
-    using System.Collections.Immutable;
+
+    using NGenerics.DataStructures.Trees;
 
     using log4net;
 
     using HM.HM3B.A.E.O.Classes.Results.SurgeonOperatingRoomDayAssignments;
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayAssignments;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayAssignments;
     using HM.HM3B.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomDayAssignments;
-
+   
     internal sealed class xFactory : IxFactory
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -19,7 +21,7 @@
         }
 
         public Ix Create(
-            ImmutableList<IxResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxResultElement>>> value)
         {
             Ix result = null;
 

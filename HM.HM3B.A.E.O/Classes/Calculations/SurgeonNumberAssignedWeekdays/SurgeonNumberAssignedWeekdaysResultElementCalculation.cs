@@ -26,7 +26,7 @@
         {
             return surgeonNumberAssignedWeekdaysResultElementFactory.Create(
                 sIndexElement,
-                x.Value.Where(i => i.sIndexElement == sIndexElement && i.Value).Select(i => i.tIndexElement.Value.ToDateTimeOffset(TimeSpan.Zero).UtcDateTime.DayOfWeek).Distinct().Count());
+                0); //x.Value.Where(i => i.sIndexElement == sIndexElement && i.Value).Select(i => i.tIndexElement.Value.ToDateTimeOffset(TimeSpan.Zero).UtcDateTime.DayOfWeek).Distinct().Count());
         }
     }
 }

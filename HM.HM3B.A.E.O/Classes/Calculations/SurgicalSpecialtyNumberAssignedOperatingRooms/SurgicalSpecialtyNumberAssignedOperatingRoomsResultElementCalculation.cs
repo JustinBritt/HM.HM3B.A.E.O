@@ -25,7 +25,7 @@
         {
             return surgicalSpecialtyNumberAssignedOperatingRoomsResultElementFactory.Create(
                 ΔParameterElement.jIndexElement,
-                ΔParameterElement.Value.SelectMany(a => x.Value.Where(i => i.sIndexElement == a && i.Value).Select(w => w.rIndexElement)).Distinct().Count());
+                0);// ΔParameterElement.Value.SelectMany(a => x.Value.Where(i => i.sIndexElement == a && i.Value).Select(w => w.rIndexElement)).Distinct().Count());
         }
     }
 }
