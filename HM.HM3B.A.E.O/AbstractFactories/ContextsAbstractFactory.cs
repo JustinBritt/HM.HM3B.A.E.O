@@ -87,5 +87,23 @@
 
             return factory;
         }
+
+        public IScenarioProbabilitiesVisitorFactory CreateScenarioProbabilitiesVisitorFactory()
+        {
+            IScenarioProbabilitiesVisitorFactory factory = null;
+
+            try
+            {
+                factory = new ScenarioProbabilitiesVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
     }
 }
