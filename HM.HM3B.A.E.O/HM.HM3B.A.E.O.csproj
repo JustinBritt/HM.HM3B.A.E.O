@@ -34,4 +34,9 @@
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="InterfacesVisitors\Results\SurgeonOperatingRoomDayAssignments\" />
+    <Folder Include="Visitors\Results\SurgeonOperatingRoomDayAssignments\" />
+  </ItemGroup>
 </Project>
