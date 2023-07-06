@@ -1,19 +1,17 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgeonDayAssignments
 {
-    using System;
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
 
     using Hl7.Fhir.Model;
 
     using NGenerics.DataStructures.Trees;
+    using NGenerics.Patterns.Visitor;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonDayAssignments;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonDayAssignments;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
+    using HM.HM3B.A.E.O.InterfacesVisitors.Results.SurgeonDayAssignments;
 
     internal sealed class z : Iz
     {
@@ -34,17 +32,18 @@
             return this.Value[sIndexElement][tIndexElement].Value ? 1 : 0;
         }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value.Values.SelectMany(w => w.Values).ToList()
-                .Select(
-                i => Tuple.Create(
-                    i.sIndexElement.Value,
-                    i.tIndexElement.Value,
-                    nullableValueFactory.Create<bool>(
-                        i.Value)))
-                .ToImmutableList();
+            IzOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>> xOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.SurgeonDayAssignments.zOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>>(
+                nullableValueFactory,
+                new HM.HM3B.A.E.O.Classes.Comparers.FhirDateTimeComparer(),
+                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            this.Value.AcceptVisitor(
+                xOuterVisitor);
+
+            return xOuterVisitor.RedBlackTree;
         }
     }
 }
