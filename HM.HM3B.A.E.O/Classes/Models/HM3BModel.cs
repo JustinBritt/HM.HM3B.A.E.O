@@ -255,7 +255,7 @@
                 surgeonScenarioWeightedAverageSurgicalDurationsOuterVisitor.RedBlackTree);
 
             // L(s)
-            ISurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>> surgeonLengthOfStayMaximumsVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>>(
+            ISurgeonLengthOfStayMaximumsVisitor<Organization, INullableValue<int>> surgeonLengthOfStayMaximumsVisitor = contextsAbstractFactory.CreateSurgeonLengthOfStayMaximumsVisitorFactory().Create<Organization, INullableValue<int>>(
                 dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateLParameterElementFactory(),
                 this.s);
