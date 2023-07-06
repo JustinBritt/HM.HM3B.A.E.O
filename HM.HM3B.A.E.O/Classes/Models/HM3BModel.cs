@@ -214,7 +214,7 @@
             // Parameters
 
             // BBar(j)
-            ISurgicalSpecialtyNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>> surgicalSpecialtyNumberAssignedTimeBlocksVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.SurgicalSpecialtyNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>>(
+            ISurgicalSpecialtyNumberAssignedTimeBlocksVisitor<Organization, INullableValue<int>> surgicalSpecialtyNumberAssignedTimeBlocksVisitor = contextsAbstractFactory.CreateSurgicalSpecialtyNumberAssignedTimeBlocksVisitor().Create<Organization, INullableValue<int>>(
                 dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateBBarParameterElementFactory(),
                 this.j);
