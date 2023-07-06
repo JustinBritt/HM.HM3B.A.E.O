@@ -105,5 +105,23 @@
 
             return factory;
         }
+
+        public ISurgeonLengthOfStayMaximumsVisitorFactory CreateSurgeonLengthOfStayMaximumsVisitorFactory()
+        {
+            ISurgeonLengthOfStayMaximumsVisitorFactory factory = null;
+
+            try
+            {
+                factory = new SurgeonLengthOfStayMaximumsVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
     }
 }
