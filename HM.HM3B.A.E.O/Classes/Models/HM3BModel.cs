@@ -338,7 +338,7 @@
                 surgeonScenarioMaximumNumberPatientMeansOuterVisitor.RedBlackTree);
 
             // Ρ(Λ)
-            IScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>> scenarioProbabilitiesVisitor = new HM.HM3B.A.E.O.Visitors.Contexts.ScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>>(
+            IScenarioProbabilitiesVisitor<INullableValue<int>, INullableValue<decimal>> scenarioProbabilitiesVisitor = contextsAbstractFactory.CreateScenarioProbabilitiesVisitorFactory().Create<INullableValue<int>, INullableValue<decimal>>(
                 dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 parameterElementsAbstractFactory.CreateΡParameterElementFactory(),
                 this.Λ);
