@@ -180,9 +180,11 @@
 
             // z(s, t) 
             Iz z = HM3BModel.z.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreatezResultElementFactory(),
                 resultsAbstractFactory.CreatezFactory(),
-                HM3BModel.st);
+                HM3BModel.s,
+                HM3BModel.t);
 
             this.SurgeonDayAssignments = z
                 .GetValueForOutputContext(
