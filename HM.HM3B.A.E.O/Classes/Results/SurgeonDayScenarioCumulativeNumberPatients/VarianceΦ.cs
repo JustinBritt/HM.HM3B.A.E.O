@@ -1,9 +1,8 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgeonDayScenarioCumulativeNumberPatients
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonDayScenarioCumulativeNumberPatients;
@@ -14,22 +13,34 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public VarianceΦ(
-            ImmutableList<IVarianceΦResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IVarianceΦResultElement>>> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IVarianceΦResultElement> Value { get; }
+        public RedBlackTree<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IVarianceΦResultElement>>> Value { get; }
 
         public decimal GetElementAtAsdecimal(
             IsIndexElement sIndexElement,
             IlIndexElement lIndexElement,
             IΛIndexElement ΛIndexElement)
         {
-            return this.Value
-                .Where(x => x.sIndexElement == sIndexElement && x.lIndexElement == lIndexElement && x.ΛIndexElement == ΛIndexElement)
-                .Select(x => x.Value)
-                .SingleOrDefault();
+            RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IVarianceΦResultElement>> firstInnerTree = this.Value[sIndexElement];
+
+            RedBlackTree<IΛIndexElement, IVarianceΦResultElement> secondInnerTree;
+
+            bool result = firstInnerTree.TryGetValue(
+                lIndexElement,
+                out secondInnerTree);
+
+            if (result)
+            {
+                return secondInnerTree[ΛIndexElement].Value;
+            }
+            else
+            {
+                return 0m;
+            }
         }
     }
 }

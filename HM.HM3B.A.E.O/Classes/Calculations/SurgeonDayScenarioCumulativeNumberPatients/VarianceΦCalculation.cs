@@ -28,7 +28,9 @@
             IVarianceΦFactory varianceΦFactory,
             IVarianceΦResultElementCalculation varianceΦResultElementCalculation,
             Il l,
+            Is s,
             It t,
+            IΛ Λ,
             IslΛ slΛ,
             IL L,
             Ip p,
@@ -48,7 +50,10 @@
                     p,
                     μ,
                     σ))
-                .ToImmutableList());
+                .ToImmutableList(),
+                l,
+                s,
+                Λ);
         }
     }
 }
