@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="InterfacesVisitors\Results\SurgeonOperatingRoomDayAssignments\" />
-    <Folder Include="Visitors\Results\SurgeonOperatingRoomDayAssignments\" />
+    <Folder Include="InterfacesVisitors\Results\SurgeonDayAssignments\" />
+    <Folder Include="Visitors\Results\SurgeonDayAssignments\" />
   </ItemGroup>
 </Project>
