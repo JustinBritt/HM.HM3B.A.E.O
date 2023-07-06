@@ -35,15 +35,15 @@
         public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            IzOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>> xOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.SurgeonDayAssignments.zOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>>(
+            IzOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>> zOuterVisitor = new HM.HM3B.A.E.O.Visitors.Results.SurgeonDayAssignments.zOuterVisitor<IsIndexElement, RedBlackTree<ItIndexElement, IzResultElement>>(
                 nullableValueFactory,
                 new HM.HM3B.A.E.O.Classes.Comparers.FhirDateTimeComparer(),
                 new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
 
             this.Value.AcceptVisitor(
-                xOuterVisitor);
+                zOuterVisitor);
 
-            return xOuterVisitor.RedBlackTree;
+            return zOuterVisitor.RedBlackTree;
         }
     }
 }
