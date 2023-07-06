@@ -15,5 +15,7 @@
         IScenarioProbabilitiesVisitorFactory CreateScenarioProbabilitiesVisitorFactory();
 
         ISurgeonLengthOfStayMaximumsVisitorFactory CreateSurgeonLengthOfStayMaximumsVisitorFactory();
+
+        ISurgeonNumberAssignedTimeBlocksVisitorFactory CreateSurgeonNumberAssignedTimeBlocksVisitorFactory();
     }
 }

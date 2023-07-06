@@ -123,5 +123,23 @@
 
             return factory;
         }
+
+        public ISurgeonNumberAssignedTimeBlocksVisitorFactory CreateSurgeonNumberAssignedTimeBlocksVisitorFactory()
+        {
+            ISurgeonNumberAssignedTimeBlocksVisitorFactory factory = null;
+
+            try
+            {
+                factory = new SurgeonNumberAssignedTimeBlocksVisitorFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
     }
 }
