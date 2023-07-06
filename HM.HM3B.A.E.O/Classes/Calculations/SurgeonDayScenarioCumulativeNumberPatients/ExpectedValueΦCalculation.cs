@@ -28,7 +28,9 @@
             IExpectedValueΦFactory expectedValueΦFactory,
             IExpectedValueΦResultElementCalculation expectedValueΦResultElementCalculation,
             Il l,
+            Is s,
             It t,
+            IΛ Λ,
             IslΛ slΛ,
             IL L,
             Ip p,
@@ -46,7 +48,10 @@
                     L,
                     p,
                     μ))
-                .ToImmutableList());
+                .ToImmutableList(),
+                l,
+                s,
+                Λ);
         }
     }
 }

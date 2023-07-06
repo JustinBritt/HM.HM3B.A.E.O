@@ -60,6 +60,7 @@
             Iυ2Factory υ2Factory,
             IΦHatFactory ΦHatFactory,
             Il l,
+            Is s,
             It t,
             IΛ Λ,
             IslΛ slΛ,
