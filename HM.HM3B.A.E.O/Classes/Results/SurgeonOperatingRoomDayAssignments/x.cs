@@ -38,9 +38,7 @@
         public ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            var xList = this.Value.Values.SelectMany(w => w.Values).SelectMany(w => w.Values).ToList();
-
-            return xList
+            return this.Value.Values.SelectMany(w => w.Values).SelectMany(w => w.Values).ToList()
                 .Select(
                 i => Tuple.Create(
                     i.sIndexElement.Value,
