@@ -178,6 +178,9 @@
                 ΦHatResultElementFactory,
                 ΦHatFactory,
                 ΦHatResultElementCalculationFactory.Create(),
+                l,
+                s,
+                Λ,
                 slΛ,
                 expectedValueΦ,
                 varianceΦ,
@@ -190,6 +193,9 @@
             IΦHatResultElementFactory ΦHatResultElementFactory,
             IΦHatFactory ΦHatFactory,
             IΦHatResultElementCalculation ΦHatResultElementCalculation,
+            Il l,
+            Is s,
+            IΛ Λ,
             IslΛ slΛ,
             IExpectedValueΦ expectedValueΦ,
             IVarianceΦ varianceΦ,
@@ -208,7 +214,10 @@
                     varianceΦ,
                     VHat,
                     υ2))
-                .ToImmutableList());
+                .ToImmutableList(),
+                l,
+                s,
+                Λ);
         }
     }
 }
