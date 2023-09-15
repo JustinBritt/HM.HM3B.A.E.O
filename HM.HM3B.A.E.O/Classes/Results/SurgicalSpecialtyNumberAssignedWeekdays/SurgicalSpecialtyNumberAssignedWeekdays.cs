@@ -1,12 +1,12 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgicalSpecialtyNumberAssignedWeekdays
 {
-    using System;
     using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgicalSpecialtyNumberAssignedWeekdays;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgicalSpecialtyNumberAssignedWeekdays;
@@ -24,16 +24,21 @@
 
         public ImmutableList<ISurgicalSpecialtyNumberAssignedWeekdaysResultElement> Value { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, INullableValue<int>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.jIndexElement.Value,
+            RedBlackTree<Organization, INullableValue<int>> redBlackTree = new(
+                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (ISurgicalSpecialtyNumberAssignedWeekdaysResultElement surgicalSpecialtyNumberAssignedWeekdaysResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    surgicalSpecialtyNumberAssignedWeekdaysResultElement.jIndexElement.Value,
                     nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+                        surgicalSpecialtyNumberAssignedWeekdaysResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
