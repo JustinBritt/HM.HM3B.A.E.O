@@ -1,9 +1,10 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Results.ScenarioUnutilizedTimes
 {
-    using System;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.ScenarioUnutilizedTimes;
@@ -16,7 +17,7 @@
         decimal GetElementAtAsdecimal(
             IΛIndexElement ΛIndexElement);
 
-        ImmutableList<Tuple<INullableValue<int>, INullableValue<decimal>>> GetValueForOutputContext(
+        RedBlackTree<INullableValue<int>, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory);
     }
 }
