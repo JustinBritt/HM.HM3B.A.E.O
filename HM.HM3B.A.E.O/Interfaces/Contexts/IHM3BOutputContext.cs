@@ -23,7 +23,7 @@
 
         TimeSpan OverallWallTime { get; }
 
-        ImmutableList<Tuple<INullableValue<int>, INullableValue<int>>> ScenarioNumberPatients { get; }
+        RedBlackTree<INullableValue<int>, INullableValue<int>> ScenarioNumberPatients { get; }
 
         ImmutableList<Tuple<INullableValue<int>, INullableValue<decimal>>> ScenarioTotalTimes { get; }
 
