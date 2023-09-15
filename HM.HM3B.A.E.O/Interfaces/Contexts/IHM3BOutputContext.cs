@@ -25,7 +25,7 @@
 
         RedBlackTree<INullableValue<int>, INullableValue<int>> ScenarioNumberPatients { get; }
 
-        ImmutableList<Tuple<INullableValue<int>, INullableValue<decimal>>> ScenarioTotalTimes { get; }
+        RedBlackTree<INullableValue<int>, INullableValue<decimal>> ScenarioTotalTimes { get; }
 
         ImmutableList<Tuple<INullableValue<int>, INullableValue<decimal>>> ScenarioUnderutilizations { get; }
 
