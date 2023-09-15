@@ -1,12 +1,12 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.ScenarioUnderutilizations
 {
-    using System;
     using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.ResultElements.ScenarioUnderutilizations;
     using HM.HM3B.A.E.O.Interfaces.Results.ScenarioUnderutilizations;
@@ -24,16 +24,21 @@
 
         public ImmutableList<IScenarioUnderutilizationsResultElement> Value { get; }
 
-        public ImmutableList<Tuple<INullableValue<int>, INullableValue<decimal>>> GetValueForOutputContext(
+        public RedBlackTree<INullableValue<int>, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    (INullableValue<int>)i.ΛIndexElement.Value,
+            RedBlackTree<INullableValue<int>, INullableValue<decimal>> redBlackTree = new(
+                new HM.HM3B.A.E.O.Classes.Comparers.NullableValueintComparer());
+
+            foreach (IScenarioUnderutilizationsResultElement scenarioUnderutilizationsResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    scenarioUnderutilizationsResultElement.ΛIndexElement.Value,
                     nullableValueFactory.Create<decimal>(
-                        i.Value)))
-                .ToImmutableList();
+                        scenarioUnderutilizationsResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
