@@ -1,12 +1,12 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgicalSpecialtyNumberAssignedOperatingRooms
 {
-    using System;
     using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgicalSpecialtyNumberAssignedOperatingRooms;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgicalSpecialtyNumberAssignedOperatingRooms;
@@ -24,16 +24,20 @@
 
         public ImmutableList<ISurgicalSpecialtyNumberAssignedOperatingRoomsResultElement> Value { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, INullableValue<int>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.jIndexElement.Value,
+            RedBlackTree<Organization, INullableValue<int>> redBlackTree = new(
+                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (ISurgicalSpecialtyNumberAssignedOperatingRoomsResultElement surgicalSpecialtyNumberAssignedOperatingRoomsResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    surgicalSpecialtyNumberAssignedOperatingRoomsResultElement.jIndexElement.Value,
                     nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+                        surgicalSpecialtyNumberAssignedOperatingRoomsResultElement.Value));
+            }
+            return redBlackTree;
         }
     }
 }
