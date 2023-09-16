@@ -1,6 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgeonScenarioNumberPatients
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
@@ -8,6 +7,9 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
+    using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonScenarioNumberPatients;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonScenarioNumberPatients;
@@ -25,19 +27,45 @@
 
         public ImmutableList<ISurgeonScenarioNumberPatientsResultElement> Value { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>>> GetValueForOutputContext(
+        private int GetElementAtAsint(
+            IsIndexElement sIndexElement,
+            IΛIndexElement ΛIndexElement)
+        {
+            return this.Value
+                .Where(x => x.sIndexElement == sIndexElement && x.ΛIndexElement == ΛIndexElement)
+                .Select(x => x.Value)
+                .SingleOrDefault();
+        }
+
+        public RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             Is s,
             IΛ Λ)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.sIndexElement.Value,
-                    (INullableValue<int>)i.ΛIndexElement.Value,
-                    nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+            RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> outerRedBlackTree = new(
+                new HM.HM3B.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (IsIndexElement sIndexElement in s.Value.Values)
+            {
+                RedBlackTree<INullableValue<int>, INullableValue<int>> innerRedBlackTree = new(
+                    new HM.HM3B.A.E.O.Classes.Comparers.NullableValueintComparer());
+
+                foreach (IΛIndexElement ΛIndexElement in Λ.Value.Values)
+                {
+                    innerRedBlackTree.Add(
+                        ΛIndexElement.Value,
+                        nullableValueFactory.Create<int>(
+                            this.GetElementAtAsint(
+                                sIndexElement,
+                                ΛIndexElement)));
+                }
+
+                outerRedBlackTree.Add(
+                    sIndexElement.Value,
+                    innerRedBlackTree);
+            }
+
+            return outerRedBlackTree;
         }
     }
 }
