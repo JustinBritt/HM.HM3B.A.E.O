@@ -274,7 +274,9 @@
 
             this.DayScenarioRecoveryWardUtilizationExpectedValues = expectedValueI
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                HM3BModel.t,
+                HM3BModel.Λ);
 
             // VarianceI(t, Λ)
             IVarianceI varianceI = calculationsAbstractFactory.CreateVarianceICalculationFactory().Create()
