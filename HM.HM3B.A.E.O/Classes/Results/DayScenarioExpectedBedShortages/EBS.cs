@@ -1,12 +1,13 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.DayScenarioExpectedBedShortages
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM3B.A.E.O.Interfaces.IndexElements;
     using HM.HM3B.A.E.O.Interfaces.Indices;
@@ -36,19 +37,35 @@
                 .SingleOrDefault();
         }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<int>, INullableValue<decimal>>> GetValueForOutputContext(
+        public RedBlackTree<FhirDateTime, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             It t,
             IΛ Λ)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.tIndexElement.Value,
-                    (INullableValue<int>)i.ΛIndexElement.Value,
-                    nullableValueFactory.Create<decimal>(
-                        i.Value)))
-                .ToImmutableList();
+            RedBlackTree<FhirDateTime, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> outerRedBlackTree = new(
+                new HM.HM3B.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+            foreach (ItIndexElement tIndexElement in t.Value.Values)
+            {
+                RedBlackTree<INullableValue<int>, INullableValue<decimal>> innerRedBlackTree = new(
+                    new HM.HM3B.A.E.O.Classes.Comparers.NullableValueintComparer());
+
+                foreach (IΛIndexElement ΛIndexElement in Λ.Value.Values)
+                {
+                    innerRedBlackTree.Add(
+                        ΛIndexElement.Value,
+                        nullableValueFactory.Create<decimal>(
+                            this.GetElementAtAsdecimal(
+                                tIndexElement,
+                                ΛIndexElement)));
+                }
+
+                outerRedBlackTree.Add(
+                    tIndexElement.Value,
+                    innerRedBlackTree);
+            }
+
+            return outerRedBlackTree;
         }
     }
 }
