@@ -15,7 +15,6 @@
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonScenarioNumberPatients;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
     
-
     internal sealed class SurgeonScenarioNumberPatients : ISurgeonScenarioNumberPatients
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -27,13 +26,6 @@
         }
 
         public RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, ISurgeonScenarioNumberPatientsResultElement>> Value { get; }
-
-        private int GetElementAtAsint(
-            IsIndexElement sIndexElement,
-            IΛIndexElement ΛIndexElement)
-        {
-            return this.Value[sIndexElement][ΛIndexElement].Value;
-        }
 
         public List<ISurgeonScenarioNumberPatientsResultElement> GetElementsAt(
             IΛIndexElement ΛIndexElement)
@@ -59,9 +51,7 @@
                     innerRedBlackTree.Add(
                         ΛIndexElement.Value,
                         nullableValueFactory.Create<int>(
-                            this.GetElementAtAsint(
-                                sIndexElement,
-                                ΛIndexElement)));
+                            this.Value[sIndexElement][ΛIndexElement].Value));
                 }
 
                 outerRedBlackTree.Add(
