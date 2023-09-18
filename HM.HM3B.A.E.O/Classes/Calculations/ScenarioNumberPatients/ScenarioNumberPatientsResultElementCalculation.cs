@@ -25,8 +25,9 @@
         {
             return scenarioNumberPatientsResultElementFactory.Create(
                 ΛIndexElement,
-                surgeonScenarioNumberPatients.Value
-                .Where(w => w.ΛIndexElement == ΛIndexElement)
+                surgeonScenarioNumberPatients
+                .GetElementsAt(
+                    ΛIndexElement)
                 .Select(w => w.Value)
                 .Sum());
         }

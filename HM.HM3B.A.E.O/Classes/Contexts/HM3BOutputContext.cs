@@ -106,8 +106,9 @@
                 resultElementsAbstractFactory.CreateSurgeonScenarioNumberPatientsResultElementFactory(),
                 resultsAbstractFactory.CreateSurgeonScenarioNumberPatientsFactory(),
                 calculationsAbstractFactory.CreateSurgeonScenarioNumberPatientsResultElementCalculationFactory().Create(),
+                HM3BModel.s,
+                HM3BModel.Λ,
                 HM3BModel.rt,
-                HM3BModel.sΛ,
                 HM3BModel.n,
                 x);
             

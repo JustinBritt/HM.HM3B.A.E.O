@@ -1,6 +1,6 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Results.SurgeonScenarioNumberPatients
 {
-    using System.Collections.Immutable;
+    using System.Collections.Generic;
     using System.Linq;
 
     using log4net;
@@ -14,27 +14,31 @@
     using HM.HM3B.A.E.O.Interfaces.ResultElements.SurgeonScenarioNumberPatients;
     using HM.HM3B.A.E.O.Interfaces.Results.SurgeonScenarioNumberPatients;
     using HM.HM3B.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
+    
 
     internal sealed class SurgeonScenarioNumberPatients : ISurgeonScenarioNumberPatients
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SurgeonScenarioNumberPatients(
-            ImmutableList<ISurgeonScenarioNumberPatientsResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, ISurgeonScenarioNumberPatientsResultElement>> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<ISurgeonScenarioNumberPatientsResultElement> Value { get; }
+        public RedBlackTree<IsIndexElement, RedBlackTree<IΛIndexElement, ISurgeonScenarioNumberPatientsResultElement>> Value { get; }
 
         private int GetElementAtAsint(
             IsIndexElement sIndexElement,
             IΛIndexElement ΛIndexElement)
         {
-            return this.Value
-                .Where(x => x.sIndexElement == sIndexElement && x.ΛIndexElement == ΛIndexElement)
-                .Select(x => x.Value)
-                .SingleOrDefault();
+            return this.Value[sIndexElement][ΛIndexElement].Value;
+        }
+
+        public List<ISurgeonScenarioNumberPatientsResultElement> GetElementsAt(
+            IΛIndexElement ΛIndexElement)
+        {
+            return this.Value.Values.SelectMany(w => w.Values).Where(w => w.ΛIndexElement == ΛIndexElement).ToList();
         }
 
         public RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> GetValueForOutputContext(
