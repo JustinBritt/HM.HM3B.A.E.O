@@ -1,6 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Classes.Calculations.TotalExpectedBedShortage
 {
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
@@ -32,7 +31,6 @@
                 *
                 TEBS.GetElementAtAsdecimal(
                     w))
-                .ToImmutableList()
                 .Sum());
         }
     }
