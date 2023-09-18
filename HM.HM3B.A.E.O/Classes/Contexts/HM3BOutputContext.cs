@@ -312,6 +312,8 @@
 
             this.DayScenarioExpectedBedShortages = EBS
                 .GetValueForOutputContext(
+                comparersAbstractFactory.CreateFhirDateTimeComparerFactory(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory(),
                 dependenciesAbstractFactory.CreateNullableValueFactory(),
                 HM3BModel.t,
                 HM3BModel.Λ);
