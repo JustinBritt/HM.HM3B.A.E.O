@@ -1,7 +1,5 @@
 ﻿namespace HM.HM3B.A.E.O.Interfaces.Results.DayScenarioExpectedBedShortages
 {
-    using System.Collections.Immutable;
-
     using Hl7.Fhir.Model;
 
     using NGenerics.DataStructures.Trees;
@@ -14,8 +12,6 @@
 
     public interface IEBS
     {
-        ImmutableList<IEBSResultElement> Value { get; }
-
         decimal GetElementAtAsdecimal(
             ItIndexElement tIndexElement,
             IΛIndexElement ΛIndexElement);
